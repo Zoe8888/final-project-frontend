@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/posts.css">
+    <title>Document</title>
+</head>
+<body>
+        <!--Nav Bar-->
+        <nav id="nav">
+            <ul>
+                <li><a href="/home.html">HOME</a></li>
+                <div class="profile-container">
+                    <li></a>ACCOUNT</li>
+                    <div class="profile-menu">
+                        <li><a href="/profile.html">PROFILE</a></li>
+                        <li><a href="/posts.html">POSTS</a></li>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+        <!--Post Section-->
+        <section id="posts">
+            <div class="post-container"></div>
+            <div class="editPostContainer hide">
+                <form onsubmit="return false">
+                    <button class="close">X</button>
+                    <input class="editPostImageInput" placeholder="postImage" type="file" onchange="viewFile()">
+                    <img class="editPostImage" height="300" src="" alt="">
+                    <input class="editTitle" placeholder="Title" type="text">
+                    <input class="editIntro" placeholder="Intro" type="text">
+                    <input class="editBody" placeholder="Body" type="text">
+                    <input class="editConclusion" placeholder="Conclusion" type="text">
+                    <input class="editDateCreated" placeholder="Date Created" type="text">
+                    <input class="editAuthor" placeholder="Author" type="text">
+                    <input class="editUserId" placeholder="User ID" type="text">
+                    <button class="savePost" onclick="editPost()">Save Changes</button>
+                </form>
+            </div>
+        </section>
+    <script src="/javaScript/posts.js"></script>
+</body>
+</html>

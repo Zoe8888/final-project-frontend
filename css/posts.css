@@ -1,0 +1,7 @@
+.hide {
+    display: none;
+}
+
+.postImage img {
+    height: 30vh;
+}

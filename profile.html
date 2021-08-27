@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--Nav Bar-->
+    <nav id="nav">
+        <ul>
+            <li><a href="/home.html">HOME</a></li>
+            <div class="profile-container">
+                <li></a>ACCOUNT</li>
+                <div class="profile-menu">
+                    <li><a href="/profile.html">PROFILE</a></li>
+                    <li><a href="/posts.html">POSTS</a></li>
+                </div>
+            </div>
+        </ul>
+    </nav>
+    <!--Profile-->
+    <section id="profile">
+        <div class="profile-container">
+        </div>
+        <!--Edit User Profile-->
+        <div class="editProfile hide">
+            <form onsubmit="return false">
+                <button class="close">X</button>
+                <input class="profilePictureInput" onchange="viewFile()" type="file" placeholder="Profile Picture">
+                <img class="profilePicture" src="" alt="">
+                <input class="profileName" type="text" placeholder="Name">
+                <input class="profileSurname" type="text" placeholder="Surname">
+                <input class="profileEmail" type="text" placeholder="Email">
+                <input class="profilePassword" type="password" placeholder="password">
+                <button class="saveProfile" onclick="editProfile()">Save Changes</button>
+            </form>
+        </div>
+    </section>
+    <script src="/javaScript/profile.js"></script>
+</body>
+</html>
