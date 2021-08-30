@@ -31,8 +31,8 @@ function viewUserPosts() {
                                 <p class="dateCreated">${post[7]}</p>
                                 <p class="author">${post[6]}</p>
                                 <div class="postButtons">
-                                    <button class="editPost" onclick="edit(this)">Edit Product</button>
-                                    <button class="deletePost">Delete Product</button>
+                                    <button class="editPost" onclick="edit(this)">Edit Post</button>
+                                    <button class="deletePost">Delete Post</button>
                                 </div>
                             </div>`
         });
