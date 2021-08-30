@@ -114,4 +114,21 @@ function displayComments(post_id) {
     })
 }
 
-// function editComment(comment_id)
+function editComment(comment_id) {
+    fetch(`https://shrouded-temple-45259.herokuapp.com/edit-comment/${comment_id}/`, {
+        method: "PUT",
+        body: JSON.stringify({
+            comment: document.querySelector('.edit').value
+        }),
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+        },
+    })
+    .then((res) => res.json)
+    .then((data) => {
+        console.log(data);
+        window.alert("Your comment has been edited")
+        window.location.href = "/home.html";
+    })
+}
