@@ -24,17 +24,18 @@
     <section id="posts">
         <div class="post-container">
         </div>
-            <div class="postModal hide">
-                <div class="addCommentContainer">
+            <div class="postModalContainer hide">
+                <div class="postModal"></div>
+                <div class="addCommentContainer hideAdd">
                     <form action="">
                         <input type="text" class="add" placeholder="Type here">
-                        <button type="submit" class="saveComment"></button>
+                        <button type="submit" onclick="addComment()" class="saveComment"></button>
                     </form>
                 </div>
                 <div class="editCommentContainer hideContainer">
-                    <form action="">
+                    <form class="editForm">
                         <input type="text" class="edit" placeholder="Type here">
-                        <button type="submit" onclick="editComment()" class="saveComment">Save</button>
+                        <button type="submit" class="saveEditedComment">Save</button>
                         <button class="cancel">Cancel</button>
                     </form>
                 </div>

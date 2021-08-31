@@ -28,7 +28,7 @@ function showPosts() {
                 button.addEventListener('click', (e) => {
                     console.log(e)
                     viewPost(e.currentTarget.parentElement.id)
-                    let post = document.querySelector('.postModal')
+                    let post = document.querySelector('.postModalContainer')
                     post.classList.toggle('hide');
                     post.classList.toggle('closePost')
                 })
@@ -40,7 +40,7 @@ function showPosts() {
 showPosts();
 
 function openPost (e) {
-    let post = document.querySelector('.postModal')
+    let post = document.querySelector('.postModalContainer')
     post.classList.toggle('hide');
     post.id = e.currentTarget.parentElement.parentElement.id
 }
@@ -91,7 +91,7 @@ function viewPost(post_id) {
                                 </div>
                                 <h3 class="author">${post[6]}</h3>
                                 <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
-                                <button class="addComment()">Comment</button>`
+                                <button class="comment()">Comment</button>`
             displayLikes(post[0])
             displayComments(post[0]);
         });
@@ -169,21 +169,23 @@ function displayComments(post_id) {
                                     <button class="deleteComment">Delete</button>
                                 </div>
                             </div>`
-                            document.querySelectorAll('.editComment').forEach(button => {
-                                button.addEventListener('click', (e) => {
-                                    console.log(e)
-                                    editComment(e.currentTarget.parentElement.id)
-                                });
-                            })
                             document.querySelectorAll('.deleteComment').forEach(button => {
                                 button.addEventListener('click', (e) => {
                                     console.log(e)
                                     deleteComment(e.currentTarget.parentElement.id)
+                                    document.querySelector('.editCommentContainer').id = comment[0]
                                 });
                             })
         })
     })
 }
+
+document.querySelectorAll('.editComment').forEach(button => {
+    button.addEventListener('click', (e) => {
+        console.log(e)
+        editComment(e.currentTarget.parentElement.id)
+    });
+})
 
 function addComment() {
     fetch(`https://shrouded-temple-45259.herokuapp.com/add-comment/`, {
@@ -201,6 +203,11 @@ function addComment() {
         console.log(data);
         window.alert("Comment added to post")
     })
+}
+
+function comment() {
+    let addComment = document.querySelector('.add')
+    addComment.classList.toggle('hideAdd')
 }
 
 function editComment(comment_id) {
@@ -223,10 +230,15 @@ function editComment(comment_id) {
 }
 
 function updateComment (e) {
-    let editComment = document.querySelector('.edit')
+    let editComment = document.querySelector('.editCommentContainer')
     editComment.classList.toggle('hideContainer');
     editComment.classList.toggle('.cancel');
 }
+
+document.querySelector('.editForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    editComment(e.currentTarget.parentElement.parentElement.id);
+})
 
 function deleteComment(comment_id) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/delete-comment/${comment_id}/`, {
