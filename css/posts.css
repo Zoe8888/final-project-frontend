@@ -5,3 +5,7 @@
 .postImage img {
     height: 30vh;
 }
+
+.postModal {
+    position: fixed;
+}

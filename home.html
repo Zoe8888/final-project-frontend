@@ -23,12 +23,22 @@
     </nav>
     <section id="posts">
         <div class="post-container">
-            <!-- <div class="editCommentContainer">
-                <form action="">
-                    <input type="text" class="edit" placeholder="Comment here">
-                </form>
-            </div> -->
         </div>
+            <div class="postModal hide">
+                <div class="addCommentContainer">
+                    <form action="">
+                        <input type="text" class="add" placeholder="Type here">
+                        <button type="submit" class="saveComment"></button>
+                    </form>
+                </div>
+                <div class="editCommentContainer hideContainer">
+                    <form action="">
+                        <input type="text" class="edit" placeholder="Type here">
+                        <button type="submit" onclick="editComment()" class="saveComment">Save</button>
+                        <button class="cancel">Cancel</button>
+                    </form>
+                </div>
+            </div>
     </section>
     <script src="/javaScript/home.js"></script>
 </body>
