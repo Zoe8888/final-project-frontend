@@ -3,7 +3,6 @@ function showPosts() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
         },
     })
     .then((res) => res.json())
@@ -45,26 +44,11 @@ function openPost (e) {
     post.id = e.currentTarget.parentElement.parentElement.id
 }
 
-// document.querySelector('.closePost').addEventListener('click', () => {
-//     let post = document.querySelector('.postModal')
-//     post.classList.toggle('hide');
-//     post.classList.toggle('closePost');
-// })
-
-// document.querySelector('.viewPost').addEventListener('click', (e) => {
-//     let post = document.querySelector('.postModal')
-//     post.classList.toggle('hide');
-//     post.classList.toggle('closePost');
-
-//     viewPost(e.parentElement.id)
-// })
-
 function viewPost(post_id) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/view-post/${post_id}/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
         },
     })
     .then((res) => res.json())
@@ -91,7 +75,7 @@ function viewPost(post_id) {
                                 </div>
                                 <h3 class="author">${post[6]}</h3>
                                 <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
-                                <button class="comment()">Comment</button>`
+                                <button class="comment" onclick="comment()">Comment</button>`
             displayLikes(post[0])
             displayComments(post[0]);
         });
@@ -102,22 +86,30 @@ function likePost(element) {
     post_id = element.parentElement.id
     console.log(post_id)
     let username = window.localStorage["username"];
-    fetch("https://shrouded-temple-45259.herokuapp.com/like-post/", {
-        method: "POST",
-        body: JSON.stringify({
-            username: username,
-            post_id: post_id,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
-        },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        window.alert("Post liked")
-    })
+    if (window.localStorage["jwt-token"]) {
+        fetch("https://shrouded-temple-45259.herokuapp.com/like-post/", {
+            method: "POST",
+            body: JSON.stringify({
+                username: username,
+                post_id: post_id,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+                console.log(data);
+                window.alert("Post liked")
+        })
+    } else {
+        document.querySelector(
+            '.postModal'
+            ).innerHTML += `<div class="login">
+                                <h3>You need to be logged in to like this post. <br> Login or register <a href="index.html">here</a></h3>
+                            </div>`
+    }
 }
 
 function displayLikes(post_id) {
@@ -125,7 +117,6 @@ function displayLikes(post_id) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
         },
     })
     .then((res) => res.json())
@@ -149,7 +140,6 @@ function displayComments(post_id) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
         },
     })
     .then((res) => res.json())
@@ -165,7 +155,7 @@ function displayComments(post_id) {
                                 <div class="comment" id=${comment[0]}>
                                     <p>${comment[1]}</p>
                                     <p>${comment[2]}</p>
-                                    <button class="editComment" onclick="updateComment()">Edit</button>
+                                    <button class="editComment" onclick="updateComment(this)">Edit</button>
                                     <button class="deleteComment">Delete</button>
                                 </div>
                             </div>`
@@ -173,66 +163,92 @@ function displayComments(post_id) {
                                 button.addEventListener('click', (e) => {
                                     console.log(e)
                                     deleteComment(e.currentTarget.parentElement.id)
-                                    document.querySelector('.editCommentContainer').id = comment[0]
                                 });
-                            })
-        })
+                            })        })
     })
 }
 
-document.querySelectorAll('.editComment').forEach(button => {
-    button.addEventListener('click', (e) => {
-        console.log(e)
-        editComment(e.currentTarget.parentElement.id)
-    });
-})
-
-function addComment() {
-    fetch(`https://shrouded-temple-45259.herokuapp.com/add-comment/`, {
-        method: "POST",
-        body: JSON.stringify({
-            comment: document.querySelector('.add').value,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `jwt ${window.localStorage["jwt-token"]}`,
-          },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        window.alert("Comment added to post")
-    })
+function addComment(element) {
+    let username = window.localStorage['username'];
+    let post_id = element.parentElement.id;
+    if (window.localStorage["jwt-token"]) {
+        fetch(`https://shrouded-temple-45259.herokuapp.com/add-comment/`, {
+            method: "POST",
+            body: JSON.stringify({
+                comment: document.querySelector('.add').value,
+                username: username,
+                post_id: post_id,
+    
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+              },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+                console.log(data);
+                window.alert("Comment added to post");
+                displayComments(post_id);
+        })
+    } else {
+        document.querySelector(
+            '.postModal'
+            ).innerHTML += `<div class="login">
+                                <h3>You need to be logged in to comment on this post. <br> Login or register <a href="index.html">here</a></h3>
+                            </div>`
+    }
 }
 
 function comment() {
-    let addComment = document.querySelector('.add')
+    let addComment = document.querySelector('.addCommentContainer')
     addComment.classList.toggle('hideAdd')
+    addComment.classList.toggle('cancelComment')
 }
 
+document.querySelector('.addCommentForm').addEventListener('submit', (e) => {
+    e.preventDefault()
+})
+
 function editComment(comment_id) {
-    fetch(`https://shrouded-temple-45259.herokuapp.com/edit-comment/${comment_id}/`, {
-        method: "PUT",
-        body: JSON.stringify({
-            comment: document.querySelector('.edit').value,
-        }),
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `jwt ${window.localStorage["jwt-token"]}`,
-        },
-    })
-    .then((res) => res.json)
-    .then((data) => {
-        console.log(data);
-        window.alert("Your comment has been edited")
-        window.location.href = "/home.html";
-    })
+    if (window.localStorage["jwt-token"]) {
+        fetch(`https://shrouded-temple-45259.herokuapp.com/edit-comment/${comment_id}/`, {
+            method: "PUT",
+            body: JSON.stringify({
+                comment: document.querySelector('.edit').value,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+            },
+        })
+        .then((res) => res.json)
+        .then((data) => {
+            console.log(data);
+            window.alert("Your comment has been edited")
+            window.location.href = "/home.html";
+        })
+    } else {
+        document.querySelector(
+            '.postModal'
+            ).innerHTML += `<div class="login">
+                                <h3>You need to be logged in to edit this comment. <br> Login or register <a href="index.html">here</a></h3>
+                            </div>`
+    }
 }
+
+document.querySelectorAll('.saveEditedComment').forEach(button => {
+    button.addEventListener('click', (e) => {
+        console.log(e)
+        editComment(e.currentTarget.parentElement.parentElement.id)
+    });
+})
 
 function updateComment (e) {
     let editComment = document.querySelector('.editCommentContainer')
     editComment.classList.toggle('hideContainer');
-    editComment.classList.toggle('.cancel');
+    editComment.classList.toggle('cancel');
+    document.querySelector('.editCommentContainer').id = e.parentElement.id;
 }
 
 document.querySelector('.editForm').addEventListener('submit', (e) => {

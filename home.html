@@ -27,16 +27,17 @@
             <div class="postModalContainer hide">
                 <div class="postModal"></div>
                 <div class="addCommentContainer hideAdd">
-                    <form action="">
+                    <form class="addCommentForm">
                         <input type="text" class="add" placeholder="Type here">
-                        <button type="submit" onclick="addComment()" class="saveComment"></button>
+                        <button type="submit" onclick="addComment(this)" class="saveComment">Save</button>
+                        <button class="cancelComment" onclick="comment()">Cancel</button>
                     </form>
                 </div>
                 <div class="editCommentContainer hideContainer">
                     <form class="editForm">
                         <input type="text" class="edit" placeholder="Type here">
-                        <button type="submit" class="saveEditedComment">Save</button>
-                        <button class="cancel">Cancel</button>
+                        <button type="submit" class="saveEditedComment" onclick="editComment()">Save</button>
+                        <button class="cancel" onclick="updateComment()">Cancel</button>
                     </form>
                 </div>
             </div>
