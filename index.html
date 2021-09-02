@@ -5,40 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/7c1e973e41.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/scripts.css">
+    <link rel="stylesheet" href="css/home.css">
     <title>Document</title>
 </head>
 <body>
-    <!--Login Section-->
-    <section id="login">
-        <div class="login-container">
-            <h1>Login</h1>
-            <form class="login">
-                <input id="username" type="text" placeholder="username" required>
-                <input id="password" type="password" placeholder="password" required>
-                <button class="login-button">Log In</button>
-            </form>
-            <div>
-                <h3>Don't have an account? Subscribe <a href="">here</a></h3>
+    <nav id="nav">
+        <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <div class="profile-container">
+                <li></a>ACCOUNT</li>
+                <div class="profile-menu">
+                    <li><a href="/profile.html">PROFILE</a></li>
+                    <li><a href="/posts.html">POSTS</a></li>
+                </div>
             </div>
+            <li><a href="/login.html">LOGIN / REGISTER</a></li>
+        </ul>
+    </nav>
+    <section id="posts">
+        <div class="post-container">
         </div>
-    </section>
-    <section id="subscribe">
-        <div class="subscribe-container">
-            <h1>Subscribe</h1>
-            <form class="subscribe">
-                <input class="name" type="text" placeholder="name" required>
-                <input class="surname" type="text" placeholder="surname" required>
-                <input class="email" type="text" placeholder="email" required>
-                <input class="username" type="text" placeholder="username" required>
-                <input class="password" type="password" placeholder="password" required>
-                <button class="subscribe-button">Subscribe</button>
-            </form>
-            <div>
-                <h3>Already subscribed? Sign in <a href="">here</a></h3>
+            <div class="postModalContainer hide">
+                <div class="postModal"></div>
+                <div class="addCommentContainer hideAdd">
+                    <form class="addCommentForm">
+                        <input type="text" class="add" placeholder="Type here">
+                        <button type="submit" onclick="addComment(this)" class="saveComment">Save</button>
+                        <button class="cancelComment" onclick="comment()">Cancel</button>
+                    </form>
+                </div>
+                <div class="editCommentContainer hideContainer">
+                    <form class="editForm">
+                        <input type="text" class="edit" placeholder="Type here">
+                        <button type="submit" class="saveEditedComment" onclick="editComment()">Save</button>
+                        <button class="cancel" onclick="updateComment()">Cancel</button>
+                    </form>
+                </div>
             </div>
-        </div>
     </section>
-    <script src="/javaScript/scripts.js"></script>
+    <script src="/javaScript/home.js"></script>
 </body>
 </html>

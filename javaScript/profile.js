@@ -1,39 +1,47 @@
 function viewProfile() {
+  if (window.localStorage["jwt-token"]) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/view-profile/${window.localStorage["username"]}/`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            Authorization: `jwt ${window.localStorage["jwt-token"]}`,
-          },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        window.localStorage.setItem['user-id'] = data.data[0];
-        console.log(window.localStorage['user-id']);
-        user = data.data;
-        console.log(user);
-        document.querySelector(
-            ".profile-container"
-        ).innerHTML += `<div class="profile">
-                            <div>
-                                <img src="${user[1]}" alt="${user[2]}'s profile picture">
-                            </div>
-                            <p class="fistName">Name: ${user[2]}</p>
-                            <p class="lastName">Surname: ${user[3]}</p>
-                            <p class="user-email">Email: ${user[4]}</p>
-                            <p class="user-id">User ID: ${user[0]}</p>
-                            <p class="profile-username">Username: ${user[5]}</p>
-                            <p class="profile-password">Password: ${user[6]}</p>
-                            <div class="profile-buttons">
-                                <button class="edit" onclick="editContainer()">Edit Profile</button>
-                                <button class="delete">Delete Profile</button>
-                            </div>
-                        </div>`;
-                        document.querySelector('.delete').addEventListener('click', () => {
-                            deleteProfile()})
-    })
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+        },
+  })
+  .then((res) => res.json())
+  .then((data) => {
+      console.log(data);
+      window.localStorage.setItem['user-id'] = data.data[0];
+      console.log(window.localStorage['user-id']);
+      user = data.data;
+      console.log(user);
+      document.querySelector(
+          ".profileontainer"
+      ).innerHTML += `<div class="profile">
+                          <div>
+                              <img src="${user[1]}" alt="${user[2]}'s profile picture">
+                          </div>
+                          <p class="fistName">Name: ${user[2]}</p>
+                          <p class="lastName">Surname: ${user[3]}</p>
+                          <p class="user-email">Email: ${user[4]}</p>
+                          <p class="user-id">User ID: ${user[0]}</p>
+                          <p class="profile-username">Username: ${user[5]}</p>
+                          <p class="profile-password">Password: ${user[6]}</p>
+                          <div class="profile-buttons">
+                              <button class="edit" onclick="editContainer()">Edit Profile</button>
+                              <button class="delete">Delete Profile</button>
+                          </div>
+                      </div>`;
+                      document.querySelector('.delete').addEventListener('click', () => {
+                          deleteProfile()})
+  })
+  } else {
+    document.querySelector(
+      '.profileContainer'
+      ).innerHTML += `<div class="login">
+                        <h3>You need to be logged in to view your profile. <br> Login or register <a href="index.html">here</a></h3>
+                      </div>`
+  }
 }
 
 viewProfile();

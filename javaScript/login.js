@@ -35,7 +35,7 @@ function login() {
         storage.setItem("jwt-token", data["access_token"]);
         storage.setItem("username", username);
         storage.setItem("password", password);
-        window.location.href = "/home.html";
+        window.location.href = "/index.html";
       }
     });
 }

@@ -1,6 +1,7 @@
 .hide,
 .hideAdd,
-.hideContainer {
+.hideContainer,
+.hideButtons {
     display: none;
 }
 

@@ -41,7 +41,7 @@ showPosts();
 function openPost (e) {
     let post = document.querySelector('.postModalContainer')
     post.classList.toggle('hide');
-    post.id = e.currentTarget.parentElement.parentElement.id
+    post_id = document.querySelector('.post').id
 }
 
 function viewPost(post_id) {
@@ -64,7 +64,8 @@ function viewPost(post_id) {
         ).innerHTML = "";
             document.querySelector(
                 ".postModal"
-            ).innerHTML += `<h2 class="closePost" onclick="openPost()">Close<h2>
+            ).innerHTML += `<div class="blogPost" id="${post[0]}">
+                                <h2 class="closePost" onclick="openPost()">Close</h2>
                                 <div class="post-image"><img class="image" src="${post[1]}" alt="${post[2]}" /></div>
                                 <h2 class="title">${post[2]}</h2>
                                 <h3 class="dateCreated">${post[7]}</h3>
@@ -75,7 +76,8 @@ function viewPost(post_id) {
                                 </div>
                                 <h3 class="author">${post[6]}</h3>
                                 <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
-                                <button class="comment" onclick="comment()">Comment</button>`
+                                <button class="comment" onclick="comment()">Comment</button>
+                            </div>`
             displayLikes(post[0])
             displayComments(post[0]);
         });
@@ -107,9 +109,14 @@ function likePost(element) {
         document.querySelector(
             '.postModal'
             ).innerHTML += `<div class="login">
+                                <button class="exit" onclick="exit()">X</button>
                                 <h3>You need to be logged in to like this post. <br> Login or register <a href="index.html">here</a></h3>
                             </div>`
     }
+}
+
+function exit() {
+    document.querySelector('.login').remove()
 }
 
 function displayLikes(post_id) {
@@ -154,23 +161,37 @@ function displayComments(post_id) {
             ).innerHTML += `<div class="commentContainer">
                                 <div class="comment" id=${comment[0]}>
                                     <p>${comment[1]}</p>
-                                    <p>${comment[2]}</p>
-                                    <button class="editComment" onclick="updateComment(this)">Edit</button>
-                                    <button class="deleteComment">Delete</button>
+                                    <p class="commentUsername">${comment[2]}</p>
+                                    <button class="buttonsMenu"><i class="fas fa-ellipsis-h"></i></button>
+                                    <div class="buttonsContainer hideButtons">
+                                        <button class="editComment" onclick="updateComment(this)"><i class="fas fa-edit"></i></button>
+                                        <button class="deleteComment"><i class="fas fa-trash"></i></button>
+                                    </div>
                                 </div>
                             </div>`
+                            document.querySelectorAll('.buttonsMenu').forEach(button => {
+                                button.addEventListener('click', (e) => {
+                                    e.currentTarget.parentElement.querySelector('.buttonsContainer').classList.toggle('hideButtons')
+                                })
+                            })
                             document.querySelectorAll('.deleteComment').forEach(button => {
                                 button.addEventListener('click', (e) => {
                                     console.log(e)
                                     deleteComment(e.currentTarget.parentElement.id)
                                 });
-                            })        })
+                            })        
+                        })
     })
 }
 
-function addComment(element) {
+function buttons() {
+    let menu = document.querySelectorAll('.buttonsContainer')
+    menu.classList.toggle('hideButtons')
+}
+
+function addComment() {
     let username = window.localStorage['username'];
-    let post_id = element.parentElement.id;
+    let post_id = document.querySelector('.blogPost').id;
     if (window.localStorage["jwt-token"]) {
         fetch(`https://shrouded-temple-45259.herokuapp.com/add-comment/`, {
             method: "POST",
@@ -195,6 +216,7 @@ function addComment(element) {
         document.querySelector(
             '.postModal'
             ).innerHTML += `<div class="login">
+                                <button class="exit" onclick="exit()">X</button>
                                 <h3>You need to be logged in to comment on this post. <br> Login or register <a href="index.html">here</a></h3>
                             </div>`
     }
@@ -211,27 +233,37 @@ document.querySelector('.addCommentForm').addEventListener('submit', (e) => {
 })
 
 function editComment(comment_id) {
+    let comment_id_ = document.querySelector('.comment').id
+    console.log(comment_id);
     if (window.localStorage["jwt-token"]) {
-        fetch(`https://shrouded-temple-45259.herokuapp.com/edit-comment/${comment_id}/`, {
-            method: "PUT",
-            body: JSON.stringify({
-                comment: document.querySelector('.edit').value,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `jwt ${window.localStorage["jwt-token"]}`,
-            },
-        })
-        .then((res) => res.json)
-        .then((data) => {
-            console.log(data);
-            window.alert("Your comment has been edited")
-            window.location.href = "/home.html";
-        })
+        if (window.localStorage["username"] == document.getElementById(`${comment_id_}`).querySelector('.commentUsername').innerHTML) {
+            fetch(`https://shrouded-temple-45259.herokuapp.com/edit-comment/${comment_id}/`, {
+                method: "PUT",
+                body: JSON.stringify({
+                    comment: document.querySelector('.edit').value,
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+                },
+            })
+            .then((res) => res.json)
+            .then((data) => {
+                console.log(data);
+                window.alert("Your comment has been edited")
+                window.location.href = "/index.html";
+            })
+        }
+        else {
+            document.querySelector(
+                '.postModal'
+            ).innerHTML += `Error! Cannot edit this comment.`
+        }
     } else {
         document.querySelector(
             '.postModal'
             ).innerHTML += `<div class="login">
+                                <button class="exit" onclick="exit()">X</button>
                                 <h3>You need to be logged in to edit this comment. <br> Login or register <a href="index.html">here</a></h3>
                             </div>`
     }
@@ -239,7 +271,7 @@ function editComment(comment_id) {
 
 document.querySelectorAll('.saveEditedComment').forEach(button => {
     button.addEventListener('click', (e) => {
-        console.log(e)
+        console.log(e.currentTarget.parentElement.parentElement)
         editComment(e.currentTarget.parentElement.parentElement.id)
     });
 })
@@ -257,16 +289,25 @@ document.querySelector('.editForm').addEventListener('submit', (e) => {
 })
 
 function deleteComment(comment_id) {
-    fetch(`https://shrouded-temple-45259.herokuapp.com/delete-comment/${comment_id}/`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
-        },
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        window.alert("Comment deleted")
-    })
+    if (window.localStorage["jwt-token"]) {
+        fetch(`https://shrouded-temple-45259.herokuapp.com/delete-comment/${comment_id}/`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+            },
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            window.alert("Comment deleted")
+        })
+    } else {
+        document.querySelector(
+            '.postModal'
+            ).innerHTML += `<div class="login">
+                                <button class="exit" onclick="exit()">X</button>
+                                <h3>You need to be logged in to comment on this post. <br> Login or register <a href="index.html">here</a></h3>
+                            </div>`
+    }
 }
