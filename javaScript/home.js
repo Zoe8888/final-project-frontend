@@ -110,7 +110,7 @@ function likePost(element) {
             '.postModal'
             ).innerHTML += `<div class="login">
                                 <button class="exit" onclick="exit()">X</button>
-                                <h3>You need to be logged in to like this post. <br> Login or register <a href="index.html">here</a></h3>
+                                <h3>You need to be logged in to like this post. <br> Login or register <a href="login.html">here</a></h3>
                             </div>`
     }
 }
@@ -217,7 +217,7 @@ function addComment() {
             '.postModal'
             ).innerHTML += `<div class="login">
                                 <button class="exit" onclick="exit()">X</button>
-                                <h3>You need to be logged in to comment on this post. <br> Login or register <a href="index.html">here</a></h3>
+                                <h3>You need to be logged in to comment on this post. <br> Login or register <a href="login.html">here</a></h3>
                             </div>`
     }
 }
@@ -233,10 +233,11 @@ document.querySelector('.addCommentForm').addEventListener('submit', (e) => {
 })
 
 function editComment(comment_id) {
-    let comment_id_ = document.querySelector('.comment').id
+    let username = document.getElementById(`${comment_id}`).querySelector('.commentUsername')
+    console.log(username)
     console.log(comment_id);
     if (window.localStorage["jwt-token"]) {
-        if (window.localStorage["username"] == document.getElementById(`${comment_id_}`).querySelector('.commentUsername').innerHTML) {
+        if (window.localStorage["username"] == username.innerHTML) {
             fetch(`https://shrouded-temple-45259.herokuapp.com/edit-comment/${comment_id}/`, {
                 method: "PUT",
                 body: JSON.stringify({
@@ -257,14 +258,16 @@ function editComment(comment_id) {
         else {
             document.querySelector(
                 '.postModal'
-            ).innerHTML += `Error! Cannot edit this comment.`
+            ).innerHTML += `<div class="error">
+                                <h2>Error! You can only edit your own comments.</h2>
+                            </div>`
         }
     } else {
         document.querySelector(
             '.postModal'
             ).innerHTML += `<div class="login">
                                 <button class="exit" onclick="exit()">X</button>
-                                <h3>You need to be logged in to edit this comment. <br> Login or register <a href="index.html">here</a></h3>
+                                <h3>You need to be logged in to edit this comment. <br> Login or register <a href="login.html">here</a></h3>
                             </div>`
     }
 }
@@ -280,7 +283,7 @@ function updateComment (e) {
     let editComment = document.querySelector('.editCommentContainer')
     editComment.classList.toggle('hideContainer');
     editComment.classList.toggle('cancel');
-    document.querySelector('.editCommentContainer').id = e.parentElement.id;
+    document.querySelector('.editCommentContainer').id = e.parentElement.parentElement.id;
 }
 
 document.querySelector('.editForm').addEventListener('submit', (e) => {
@@ -307,7 +310,7 @@ function deleteComment(comment_id) {
             '.postModal'
             ).innerHTML += `<div class="login">
                                 <button class="exit" onclick="exit()">X</button>
-                                <h3>You need to be logged in to comment on this post. <br> Login or register <a href="index.html">here</a></h3>
+                                <h3>You need to be logged in to comment on this post. <br> Login or register <a href="login.html">here</a></h3>
                             </div>`
     }
 }

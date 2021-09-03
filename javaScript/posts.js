@@ -42,7 +42,7 @@ function viewUserPosts() {
     document.querySelector(
       '.postContainer'
       ).innerHTML +=  `<div class="login">
-                        <h3>You need to be logged in to view your posts. <br> Login or register <a href="index.html">here</a></h3>
+                        <h3>You need to be logged in to view your posts. <br> Login or register <a href="login.html">here</a></h3>
                       </div>`
   }
 }
@@ -92,6 +92,44 @@ document.querySelector('.close').addEventListener('click', () => {
     editPost.classList.toggle('hide');
     editPost.classList.toggle('.close');
 })
+
+function addPost() {
+  let add = document.querySelector('.createPostContainer')
+  add.classList.toggle('hideCreate')
+}
+
+function createPost() {
+  if (window.localStorage["username"]) {
+    fetch(`https://shrouded-temple-45259.herokuapp.com/create-post/`, {
+      method: "POST",
+      body: JSON.stringify({
+        post_image: document.querySelector('.addPostImage').src,
+        title: document.querySelector('.addTitle').value,
+        intro: document.querySelector('.addIntro').value,
+        body: document.querySelector('.addBody').value,
+        conclusion: document.querySelector('.addConclusion').value,
+        author: document.querySelector('.addAuthor').value,
+        id: document.querySelector('.addId').value,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+      }
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      window.alert("You have successfully created a new blog post.");
+      window.location.href = "/post.html";
+    })
+  } else {
+    document.querySelector(
+      '.postContainer'
+      ).innerHTML +=  `<div class="login">
+                        <h3>You need to be logged in to create a post. <br> Login or register <a href="login.html">here</a></h3>
+                      </div>`
+  }
+}
 
 function viewFile() {
     const preview = document.querySelector('.editPostImage');

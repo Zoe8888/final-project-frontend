@@ -16,7 +16,7 @@ function viewProfile() {
       user = data.data;
       console.log(user);
       document.querySelector(
-          ".profileontainer"
+          ".profileContainer"
       ).innerHTML += `<div class="profile">
                           <div>
                               <img src="${user[1]}" alt="${user[2]}'s profile picture">
@@ -39,7 +39,7 @@ function viewProfile() {
     document.querySelector(
       '.profileContainer'
       ).innerHTML += `<div class="login">
-                        <h3>You need to be logged in to view your profile. <br> Login or register <a href="index.html">here</a></h3>
+                        <h3>You need to be logged in to view your profile. <br> Login or register <a href="login.html">here</a></h3>
                       </div>`
   }
 }
@@ -114,6 +114,12 @@ function deleteProfile() {
         window.location.href = "/index.html";
         window.alert("Your profile has been deleted successfully.");
       });
+  }
+
+  function signOut() {
+    window.localStorage.removeItem("jwt-token");
+    window.location.href = "/login.html";
+    document.getElementsByClassName('signOutContainer').classList.add('hide');
   }
 
   function viewFile() {

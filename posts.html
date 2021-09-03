@@ -25,7 +25,22 @@
         </nav>
         <!--Post Section-->
         <section id="posts">
-            <div class="postContainer"></div>
+            <div class="postContainer">
+                <button class="addPost" onclick="addPost()">Create New Post</button>
+            </div>
+            <div class="createPostContainer hideCreate">
+                <form class="createPost" onsubmit="return false">
+                    <input type="file" onchange="viewFile()">
+                    <img class="addPostImage" height="400" src="" alt="">
+                    <input type="text" class="addTitle" placeholder="Title">
+                    <input type="text" class="addIntro" placeholder="Intro">
+                    <input type="text" class="addBody" placeholder="Body">
+                    <input type="text" class="addConclusion" placeholder="Conclusion">
+                    <input type="text" class="addAuthor" placeholder="Author">
+                    <input type="text" class="addId" placeholder="User Id">
+                    <button class="createPostButton" onclick="createPost()">Save</button>
+                </form>
+            </div>
             <div class="editPostContainer hide">
                 <form onsubmit="return false">
                     <button class="close">X</button>
