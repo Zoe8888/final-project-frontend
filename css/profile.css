@@ -1,3 +1,81 @@
-.hide {
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(179, 93, 59);
+}
+
+#navContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin-bottom: 10%;
+    background-color: rgb(187, 186, 186);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.navbar a,
+.navbar li {
+    color: rgb(202, 105, 67);
+    text-decoration: none;
+}
+
+.profileContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    color: rgb(179, 93, 59);
+    background-color: rgb(211, 207, 207);
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+
+.nameContainer,
+.surnameContainer,
+.emailContainer,
+.idContainer,
+.usernameContainer,
+.passwordContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidePicture,
+.hideName,
+.hideSurname,
+.hideEmail,
+.hidePassword {
     display: none;
+}
+
+.editPicture {
+    opacity: 0;
+}
+
+.fa-edit {
+    margin-left: 3%;
 }

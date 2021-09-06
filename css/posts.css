@@ -1,3 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(179, 93, 59);
+}
+
+#navContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin-bottom: 10%;
+    background-color: rgb(139, 139, 139);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.navbar a,
+.navbar li {
+    color: rgb(202, 105, 67);
+    text-decoration: none;
+}
+
 .hide,
 .hideCreate {
     display: none;

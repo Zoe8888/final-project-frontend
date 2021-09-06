@@ -99,7 +99,8 @@ function addPost() {
 }
 
 function createPost() {
-  if (window.localStorage["username"]) {
+  console.log(document.querySelector('.addPostImage').src, document.querySelector('.addTitle').value, document.querySelector('.addIntro').value, document.querySelector('.addBody').value, document.querySelector('.addConclusion').value, document.querySelector('.addAuthor').value, document.querySelector('.addId').value);
+  if (window.localStorage["jwt-token"]) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/create-post/`, {
       method: "POST",
       body: JSON.stringify({
@@ -120,7 +121,7 @@ function createPost() {
     .then((data) => {
       console.log(data);
       window.alert("You have successfully created a new blog post.");
-      window.location.href = "/post.html";
+      window.location.href = "/posts.html";
     })
   } else {
     document.querySelector(
@@ -146,4 +147,20 @@ function viewFile() {
     if (file) {
       reader.readAsDataURL(file);
     }
-  }
+}
+
+function viewImage() {
+    const preview = document.querySelector('.addPostImage');
+    const file = document.querySelector('.postImageInput').files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      "load",
+      function() {
+        preview.src = reader.result;
+      },
+      false
+    );
+    if (file) {
+      reader.readAsDataURL(file);
+}}

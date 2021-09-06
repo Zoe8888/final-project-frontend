@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(179, 93, 59);
+}
+
+#navContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin-bottom: 10%;
+    background-color: rgb(211, 207, 207);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    gap: 10px;
+}
+
+.navbar a,
+.navbar li {
+    color: rgb(202, 105, 67);
+    text-decoration: none;
+}
+
+#about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(233, 230, 230);
+}
+
+.intro {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 5% 4%;
+}
+
+.intro img {
+    margin-right: 4%;
+    width: 50vw;
+    border-radius: 2px;
+}
+
+.hodophile {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0 4%;
+}
+
+.hodophile img {
+    margin-left: 2%;
+    width: 50vw;
+    border-radius: 2px;
+}

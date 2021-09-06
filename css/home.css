@@ -1,3 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(202, 105, 67);
+}
+
+#navContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin-bottom: 10%;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.navbar a,
+.navbar li {
+    color: rgb(202, 105, 67);
+    text-decoration: none;
+}
+
+#posts {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10%;
+    gap: 20%;
+    height: 100%;
+}
+
+.post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+}
+
+.post {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(179, 95, 62);
+    background-color: rgb(235, 235, 235);
+    border: 2px solid rgb(185, 95, 60);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgb;
+    border-radius: 2px;
+    width: 60vw;
+    margin: 2% 0;
+    text-align: center;
+}
+
+.post-image img {
+    height: 40vh;
+    margin: 5% 0;
+    border-radius: 2px;
+    border: 2px solid rgb(202, 105, 67);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.viewPost {
+    color: rgb(235, 235, 235);
+    background-color: rgb(179, 95, 62);
+    border: 2px solid rgb(163, 86, 55);
+    border-radius: 2px;
+    width: 10vw;
+}
+
+.viewPost:hover {
+    width: 12vw;
+    transition: 0.3s ease-in;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+    align-items: center;
+}
+
 .hide,
 .hideAdd,
 .hideContainer,
@@ -12,9 +104,28 @@
     bottom: 0;
     right: 0;
     overflow-y: scroll;
-    background-color: rgb(85, 83, 83);
+    background-color: rgb(235, 235, 235);
 }
 
-.post-image img {
-    height: 20vh;
+.blogPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(202, 105, 67);
+    width: 80vw;
+}
+
+.closePost {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+}
+
+.postImage img {
+    margin-top: 5%;
+    height: 30vw;
+    border-radius: 2px;
+    border: 2px solid rgb(202, 105, 67);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }

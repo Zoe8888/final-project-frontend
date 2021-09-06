@@ -10,9 +10,10 @@
 </head>
 <body>
         <!--Nav Bar-->
-        <nav id="nav">
-            <ul>
+        <nav id="navContainer">
+            <ul class="navbar">
                 <li><a href="/index.html">HOME</a></li>
+                <li><a href="/about.html">ABOUT US</a></li>
                 <div class="profile-container">
                     <li></a>ACCOUNT</li>
                     <div class="profile-menu">
@@ -30,7 +31,7 @@
             </div>
             <div class="createPostContainer hideCreate">
                 <form class="createPost" onsubmit="return false">
-                    <input type="file" onchange="viewFile()">
+                    <input class="postImageInput" type="file" onchange="viewImage()">
                     <img class="addPostImage" height="400" src="" alt="">
                     <input type="text" class="addTitle" placeholder="Title">
                     <input type="text" class="addIntro" placeholder="Intro">

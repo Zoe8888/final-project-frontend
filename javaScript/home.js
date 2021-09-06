@@ -17,16 +17,17 @@ function showPosts() {
                 ".post-container"
             ).innerHTML += `<div class="post" id="${post[0]}" >
                                 <div class="post-image"><img class="image" src="${post[1]}" alt="${post[2]}" /></div>
-                                <h2 class="title">${post[2]}</h2>
-                                <h3 class="author">Written by ${post[6]}</h3>
-                                <h4 class="dateCreated">${post[7]}</h4>
-                                <button class="viewPost">View Post</button>                            
+                                <div class="right">
+                                    <h2 class="title">${post[2]}</h2>
+                                    <h3 class="author">Written by ${post[6]}</h3>
+                                    <h4 class="dateCreated">${post[7]}</h4>
+                                    <button class="viewPost">View Post</button>
+                                </div>                            
                             </div>`
             postNo += 1
             document.querySelectorAll('.viewPost').forEach((button) => {
                 button.addEventListener('click', (e) => {
-                    console.log(e)
-                    viewPost(e.currentTarget.parentElement.id)
+                    viewPost(e.currentTarget.parentElement.parentElement.id)
                     let post = document.querySelector('.postModalContainer')
                     post.classList.toggle('hide');
                     post.classList.toggle('closePost')
@@ -66,7 +67,7 @@ function viewPost(post_id) {
                 ".postModal"
             ).innerHTML += `<div class="blogPost" id="${post[0]}">
                                 <h2 class="closePost" onclick="openPost()">Close</h2>
-                                <div class="post-image"><img class="image" src="${post[1]}" alt="${post[2]}" /></div>
+                                <div class="postImage"><img class="image" src="${post[1]}" alt="${post[2]}" /></div>
                                 <h2 class="title">${post[2]}</h2>
                                 <h3 class="dateCreated">${post[7]}</h3>
                                 <div class="content">
@@ -74,7 +75,7 @@ function viewPost(post_id) {
                                     <h3 class="body">${post[4]}</h3>
                                     <h3 class="conclusion">${post[5]}</h3>
                                 </div>
-                                <h3 class="author">${post[6]}</h3>
+                                <h3 class="author">Written by ${post[6]}</h3>
                                 <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
                                 <button class="comment" onclick="comment()">Comment</button>
                             </div>`
