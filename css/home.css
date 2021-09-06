@@ -2,7 +2,9 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(202, 105, 67);
+    /* background-color: rgb(202, 105, 67); */
+    background-image: url(/images/map.jpg);
+    object-fit: cover;
 }
 
 #navContainer {
@@ -21,11 +23,12 @@ body {
     list-style: none;
     text-decoration: none;
     justify-content: center;
+    gap: 10px;
 }
 
 .navbar a,
 .navbar li {
-    color: rgb(202, 105, 67);
+    color: rgb(123, 151, 161);
     text-decoration: none;
 }
 
@@ -51,9 +54,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: rgb(179, 95, 62);
+    color: rgb(123, 151, 161);
     background-color: rgb(235, 235, 235);
-    border: 2px solid rgb(185, 95, 60);
+    border: 2px solid rgb(103, 126, 134);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     border: 2px solid rgb;
     border-radius: 2px;
@@ -66,20 +69,21 @@ body {
     height: 40vh;
     margin: 5% 0;
     border-radius: 2px;
-    border: 2px solid rgb(202, 105, 67);
+    border: 2px solid rgb(103, 126, 134);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .viewPost {
     color: rgb(235, 235, 235);
-    background-color: rgb(179, 95, 62);
-    border: 2px solid rgb(163, 86, 55);
+    background-color: rgb(123, 151, 161);
+    border: 2px solid rgb(103, 126, 134);
     border-radius: 2px;
     width: 10vw;
+    height: 2vw;
 }
 
 .viewPost:hover {
-    width: 12vw;
+    width: 11vw;
     transition: 0.3s ease-in;
 }
 
@@ -101,10 +105,9 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
     overflow-y: scroll;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(123, 151, 161);
+    width: 100vw;
 }
 
 .blogPost {
@@ -112,20 +115,45 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: rgb(202, 105, 67);
-    width: 80vw;
+    color: rgb(235, 235, 235);
 }
 
 .closePost {
     position: absolute;
-    top: 2%;
-    right: 5%;
+    top: 1%;
+    right: 3%;
 }
 
 .postImage img {
     margin-top: 5%;
     height: 30vw;
     border-radius: 2px;
-    border: 2px solid rgb(202, 105, 67);
+    border: 2px solid rgb(103, 126, 134);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.addCommentContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* position: fixed; */
+    top: 25%;
+    right: 25%;
+    opacity: 100%;
+    width: 50vw;
+    height: 40vh;
+    background-color: rgb(235, 235, 235);
+    border-radius: 2px;
+    border: 2px solid rgb(190, 190, 190);
+}
+
+.add {
+    width: 20vw;
+    height: 7vh;
+}
+
+.addCommentButtons {
+    display: flex;
+    flex-direction: row;
 }
