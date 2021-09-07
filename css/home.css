@@ -1,9 +1,13 @@
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
     /* background-color: rgb(202, 105, 67); */
     background-image: url(/images/map.jpg);
+    background-attachment: fixed;
     object-fit: cover;
 }
 

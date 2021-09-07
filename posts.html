@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/7c1e973e41.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/posts.css">
-    <title>Document</title>
+    <title>Diary of the Hodophiles</title>
 </head>
 <body>
         <!--Nav Bar-->
@@ -23,11 +23,11 @@
                 </div>
                 <li><a href="/login.html">LOGIN / REGISTER</a></li>
             </ul>
+            <button class="addPost" onclick="addPost()">Create New Post</button>
         </nav>
         <!--Post Section-->
         <section id="posts">
             <div class="postContainer">
-                <button class="addPost" onclick="addPost()">Create New Post</button>
             </div>
             <div class="createPostContainer hideCreate">
                 <form class="createPost" onsubmit="return false">
@@ -42,19 +42,61 @@
                     <button class="createPostButton" onclick="createPost()">Save</button>
                 </form>
             </div>
-            <div class="editPostContainer hide">
+            <div class="editImageContainer hideImage">
                 <form onsubmit="return false">
-                    <button class="close">X</button>
+                    <button class="closeImage">X</button>
                     <input class="editPostImageInput" placeholder="postImage" type="file" onchange="viewFile()">
                     <img class="editPostImage" height="300" src="" alt="">
+                    <button class="saveImage" onclick="editImage()">Save</button>
+                </form>
+            </div>
+            <div class="editTitleContainer hideTitle">
+                <form onsubmit="return false">
+                    <button class="closeTitle">X</button>
                     <input class="editTitle" placeholder="Title" type="text">
+                    <button class="saveTitle" onclick="editTitle(this.parentElement.parentElement.id)">Save</button>
+                </form>
+            </div>
+            <div class="editIntroContainer hideIntro">
+                <form onsubmit="return false">
+                    <button class="closeIntro">X</button>
                     <input class="editIntro" placeholder="Intro" type="text">
+                    <button class="saveIntro" onclick="editIntro()">Save</button>
+                </form>
+            </div>
+            <div class="editBodyContainer hideBody">
+                <form onsubmit="return false">
+                    <button class="closeBody">X</button>
                     <input class="editBody" placeholder="Body" type="text">
+                    <button class="saveBody" onclick="editBody()">Save</button>
+                </form>
+            </div>
+            <div class="editConclusionContainer hideConclusion">
+                <form onsubmit="return false">
+                    <button class="closeConclusion">X</button>
                     <input class="editConclusion" placeholder="Conclusion" type="text">
-                    <input class="editDateCreated" placeholder="Date Created" type="text">
+                    <button class="saveConclusion" onclick="editConclusion()">Save</button>
+                </form>
+            </div>
+            <div class="editDateContainer hideDate">
+                <form onsubmit="return false">
+                    <button class="closeDate">X</button>
+                    <input class="editDateCreated" placeholder="Date Created (dd/mm/yyyy)" type="text">
+                    <button class="saveDate" onclick="editDate()">Save</button>
+                </form>
+            </div>
+            <div class="editAuthorContainer hideAuthor">
+                <form onsubmit="return false">
+                    <button class="closeAuthor">X</button>
                     <input class="editAuthor" placeholder="Author" type="text">
-                    <input class="editUserId" placeholder="User ID" type="text">
-                    <button class="savePost" onclick="editPost()">Save Changes</button>
+                    <button class="saveAuthor" onclick="editAuthor()">Save</button>
+                </form>
+            </div>
+            <div class="editIdContainer hideId">
+                <form onsubmit="return false">
+                    <button class="closeId">X</button>
+                    <input class="editId" placeholder="User ID" type="text">
+                    <button class="saveId">Save</button>
                 </form>
             </div>
         </section>

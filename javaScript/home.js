@@ -229,6 +229,11 @@ function comment() {
     addComment.classList.toggle('cancelComment')
 }
 
+document.querySelector('.cancelComment').addEventListener('click', () => {
+    let addComment = document.querySelector('.addCommentContainer')
+    addComment.classList.toggle('hideAdd');
+})
+
 document.querySelector('.addCommentForm').addEventListener('submit', (e) => {
     e.preventDefault()
 })

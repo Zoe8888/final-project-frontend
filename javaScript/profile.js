@@ -29,23 +29,23 @@ function viewProfile() {
                             </div>
                             <div class="surnameContainer">
                               <p class="lastName">Surname: ${user[3]}</p>
-                              <button><i class="fas fa-edit" onclick="toggleSurname()"></i></button>
+                              <i class="fas fa-edit" onclick="toggleSurname()"></i>
                             </div>
                             <div class="emailContainer">
-                              <p class="user-email">Email: ${user[4]}</p>
-                              <button onclick="toggleEmail()"><i class="fas fa-edit"></i></button>
+                              <p class="user-email">Email:<br> ${user[4]}</p>
+                              <i class="fas fa-edit" onclick="toggleEmail()"></i>
                             </div>
                             <div class="idContainer">
                               <p class="user-id">User ID: ${user[0]}</p>
-                              <button onclick=""><i class="fas fa-edit"></i></button>
+                              <i class="fas fa-edit" onclick="toggleId()"></i>
                             </div>
                             <div class="usernameContainer">
                               <p class="profile-username">Username: ${user[5]}</p>
-                              <button><i class="fas fa-edit"></i></button>
+                              <i class="fas fa-edit"></i>
                             </div>
                             <div class="passwordContainer">
                               <p class="profile-password">Password: ${user[6]}</p>
-                              <button onclick="togglePassword()"><i class="fas fa-edit"></i></button>
+                              <i class="fas fa-edit" onclick="togglePassword()"></i>
                             </div>
                             <div class="profile-buttons">
                                 <button class="signOut" onclick="signOut()">Sign Out</button>
@@ -110,7 +110,6 @@ function togglePicture () {
 document.querySelector('.closePicture').addEventListener('click', () => {
   let edit = document.querySelector('.editPictureContainer')
   edit.classList.toggle('hidePicture');
-  edit.classList.toggle('closePicture');
 })
 
 
@@ -141,7 +140,6 @@ function toggleName() {
 document.querySelector('.closeName').addEventListener('click', () => {
   let edit = document.querySelector('.editNameContainer')
   edit.classList.toggle('hideName');
-  edit.classList.toggle('closeName');
 })
 
 
@@ -172,7 +170,6 @@ function toggleSurname() {
 document.querySelector('.closeSurname').addEventListener('click', () => {
   let edit = document.querySelector('.editSurnameContainer')
   edit.classList.toggle('hideSurname');
-  edit.classList.toggle('closeSurname');
 })
 
 
@@ -203,9 +200,17 @@ function toggleEmail() {
 document.querySelector('.closeEmail').addEventListener('click', () => {
   let edit = document.querySelector('.editEmailContainer')
   edit.classList.toggle('hideEmail');
-  edit.classList.toggle('closeEmail');
 })
 
+function toggleId() {
+  let container = document.querySelector('.editIdContainer')
+  container.classList.toggle('hideId')
+}
+
+document.querySelector('.closeId').addEventListener('click', () => {
+  let edit = document.querySelector('.editIdContainer')
+  edit.classList.toggle('hideId');
+})
 
 function editPassword() {
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
@@ -234,7 +239,6 @@ function togglePassword() {
 document.querySelector('.closePassword').addEventListener('click', () => {
   let edit = document.querySelector('.editPasswordContainer')
   edit.classList.toggle('hidePassword');
-  edit.classList.toggle('closePassword');
 })
 
 function deleteProfile() {

@@ -79,3 +79,8 @@ document.querySelector('.subscribe').addEventListener('submit', (e) => {
   e.preventDefault()
   subscribe()
 })
+
+function loginToggle() {
+  let login = document.querySelector('.login')
+  login.classList.toggle('hide')
+}

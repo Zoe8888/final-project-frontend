@@ -33,7 +33,7 @@
             <form onsubmit="return false">
                 <button class="closePicture">X</button>
                 <input class="profilePictureInput" onchange="viewFile()" type="file" placeholder="Profile Picture">
-                <img class="profilePicture" src="" alt="">
+                <img class="newProfilePicture" height="200" src="" alt="">
                 <button class="savePicture" onclick="editPicture()">Save</button>
             </form>
         </div>
@@ -41,7 +41,7 @@
             <form onsubmit="return false">
                 <button class="closeName">X</button>
                 <input class="profileName" type="text" placeholder="Name">
-                <button class="saveName" onclick="editName()">Save Changes</button>
+                <button class="saveName" onclick="editName()">Save</button>
             </form>
         </div>
         <div class="editSurnameContainer hideSurname">
@@ -58,6 +58,13 @@
                 <button class="saveEmail" onclick="editEmail()">Save</button>
             </form>
         </div>
+        <div class="editIdContainer hideId">
+            <button class="closeId">X</button>
+            <h2 class="idError">Error! You are not allowed to change your User ID. <br> This is a number each user recieves when registering and it needs to be unique.</h2>
+        </div>
+        <div class="editUsernameContainer">
+            <button class="closeUsername">X</button>
+        </div>
         <div class="editPasswordContainer hidePassword">
             <form onsubmit="return false">
                 <button class="closePassword">X</button>
@@ -65,9 +72,6 @@
                 <button class="savePassword" onclick="editPassword()">Save</button>
             </form>
         </div>
-        <!-- <div class="signOutContainer">
-            <button class="signOut" onclick="signOut()">Sign Out</button>
-        </div> -->
     </section>
     <script src="/javaScript/profile.js"></script>
 </body>

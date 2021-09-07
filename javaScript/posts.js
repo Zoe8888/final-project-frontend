@@ -23,16 +23,33 @@ function viewUserPosts() {
               ".postContainer"
           ).innerHTML += `<div class="post" id="${post[0]}">
                               <div class="postImage"><img src="${post[1]}" alt="${post[2]}" /></div>
-                              <h3 class="title">${post[2]}</h3>
-                              <div class="content">
-                                <p class="intro">${post[3]}</p>
-                                <p class="body">${post[4]}</p>
-                                <p class="conclusion">${post[5]}</p>
+                              <div class="titleContainer">
+                                <h3 class="title">${post[2]}</h3>
+                                <i class="fas fa-edit" onclick="toggleTitle(this)"></i>
                               </div>
-                              <p class="dateCreated">${post[7]}</p>
-                              <p class="author">${post[6]}</p>
+                              <div class="content">
+                                <div class="introContainer">
+                                  <p class="intro">${post[3]}</p>
+                                  <i class="fas fa-edit" onclick="toggleIntro()"></i>
+                                </div>
+                                <div class="bodyContainer">
+                                  <p class="body">${post[4]}</p>
+                                  <i class="fas fa-edit" onclick="toggleBody()"></i>
+                                </div>
+                                <div class="conclusionContainer">
+                                  <p class="conclusion">${post[5]}</p>
+                                  <i class="fas fa-edit" onclick="toggleConclusion()"></i>
+                                </div>
+                              </div>
+                              <div class="dateContainer">
+                                <p class="dateCreated">${post[7]}</p>
+                                <i class="fas fa-edit" onclick="toggleDate()"></i>
+                              </div>
+                              <div class="authorContainer">
+                                <p class="author">${post[6]}</p>
+                                <i class="fas fa-edit" onclick="toggleAuthor()"></i>
+                              </div>
                               <div class="postButtons">
-                                  <button class="editPost" onclick="edit(this)">Edit Post</button>
                                   <button class="deletePost">Delete Post</button>
                               </div>
                           </div>`
@@ -53,18 +70,11 @@ function exit() {
   document.querySelector('.login').remove()
 }
 
-function editPost() {
+function editImage() {
     fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
         method: "PUT", 
         body: JSON.stringify ({
           post_image: document.querySelector('.editPostImage').src,
-          title: document.querySelector('.editTitle').value,
-          intro: document.querySelector('.editIntro').value,
-          body: document.querySelector('.editBody').value,
-          conclusion: document.querySelector('.editConclusion').value,
-          date_created: document.querySelector('.editDateCreated').value,
-          author: document.querySelector('.editAuthor').value,
-          id: document.querySelector('.editUserId').value,
         }),
         headers: {
             "Content-Type": "application/json",
@@ -74,23 +84,239 @@ function editPost() {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      window.alert("Your post has been edited successfully.");
+      window.alert("The post image has been edited successfully.");
       window.location.href = "/posts.html";
       viewUserPosts();
     });
 }
 
-
-function edit (e) {
-    let editPost = document.querySelector('.editPostContainer')
-    editPost.classList.toggle('hide');
-    editPost.id = e.parentElement.parentElement.id
+function toggleImage (e) {
+    let editImage = document.querySelector('.editImageContainer')
+    editImage.classList.toggle('hide');
+    editImage.id = e.parentElement.parentElement.id
 }
 
-document.querySelector('.close').addEventListener('click', () => {
-    let editPost = document.querySelector('.editPostContainer')
-    editPost.classList.toggle('hide');
-    editPost.classList.toggle('.close');
+document.querySelector('.closeImage').addEventListener('click', () => {
+    let editImage = document.querySelector('.editImageContainer')
+    editImage.classList.toggle('hideImage');
+})
+
+function editTitle(post_id) {
+  console.log(post_id);
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${post_id}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      title: document.querySelector('.editTitle').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The title of your post was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleTitle (e) {
+  let editTitle = document.querySelector('.editTitleContainer')
+  editTitle.classList.toggle('hideTitle');
+  editTitle.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeTitle').addEventListener('click', () => {
+    let editTitle = document.querySelector('.editTitleContainer')
+    editTitle.classList.toggle('hideTitle');
+})
+
+function editIntro() {
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      intro: document.querySelector('.editIntro').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The introduction of your post was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleIntro (e) {
+  let editIntro = document.querySelector('.editIntroContainer')
+  editIntro.classList.toggle('hideIntro');
+  editIntro.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeIntro').addEventListener('click', () => {
+  let editIntro = document.querySelector('.editIntroContainer')
+  editIntro.classList.toggle('hideIntro');
+})
+
+function editBody() {
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      body: document.querySelector('.editBody').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The body of your post was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleBody (e) {
+  let editBody = document.querySelector('.editBodyContainer')
+  editBody.classList.toggle('hideBody');
+  editBody.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeBody').addEventListener('click', () => {
+  let editBody = document.querySelector('.editBodyContainer')
+  editBody.classList.toggle('hideBody');
+})
+
+function editConclusion() {
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      conclusion: document.querySelector('.editConclusion').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The conclusion of your post was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleConclusion (e) {
+  let editConclusion = document.querySelector('.editConclusionContainer')
+  editConclusion.classList.toggle('hideConclusion');
+  editConclusion.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeConclusion').addEventListener('click', () => {
+  let editConclusion = document.querySelector('.editConclusionContainer')
+  editConclusion.classList.toggle('hideConclusion');
+})
+
+function editDate() {
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      date_created: document.querySelector('.editDateCreated').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The post creation date was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleDate (e) {
+  let editDate = document.querySelector('.editDateContainer')
+  editDate.classList.toggle('hideDate');
+  editDate.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeDate').addEventListener('click', () => {
+  let editDate = document.querySelector('.editDateContainer')
+  editDate.classList.toggle('hideDate');
+})
+
+function editAuthor() {
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      author: document.querySelector('.editAuthor').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The author of your post was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleAuthor (e) {
+  let editAuthor = document.querySelector('.editAuthorContainer')
+  editAuthor.classList.toggle('hideAuthor');
+  editAuthor.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeAuthor').addEventListener('click', () => {
+  let editAuthor = document.querySelector('.editAuthorContainer')
+  editAuthor.classList.toggle('hideAuthor');
+})
+
+function editId() {
+  fetch(`https://shrouded-temple-45259.herokuapp.com/edit-post/${window.localStorage["postID"]}/`, {
+    method: "PUT",
+    body: JSON.stringify ({
+      id: document.querySelector('.editUserId').value,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+    }
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    window.alert("The user ID of your post was edited successfully.")
+    window.location.href = "/posts.html";
+    viewUserPosts();
+  })
+}
+
+function toggleId (e) {
+  let editId = document.querySelector('.editIdContainer')
+  editId.classList.toggle('hideId');
+  editId.id = e.parentElement.parentElement.id
+}
+
+document.querySelector('.closeId').addEventListener('click', () => {
+  let editId = document.querySelector('.editIdContainer')
+  editId.classList.toggle('hideId');
 })
 
 function addPost() {
