@@ -57,6 +57,17 @@ body {
     margin: 7%;
 }
 
+.editPicture {
+    width: 25vw;
+    opacity: 0;
+    color: rgb(211, 207, 207);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editPicture:hover {
+    opacity: 1;
+}
+
 .right {
     display: flex;
     flex-direction: column;

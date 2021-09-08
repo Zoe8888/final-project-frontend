@@ -18,9 +18,9 @@ function viewProfile() {
       document.querySelector(
           ".profileContainer"
       ).innerHTML += `<div class="profile">
-                          <div class="left">
+                          <div class="pictureContainer">
                               <img class="profilePicture" src="${user[1]}" alt="${user[2]}'s profile picture">
-                              <p class="editPicture" onclick="togglePicture()">Edit Profile Picture</p>
+                              <div class="editPicture" onclick="togglePicture()">Edit Profile Picture</div>
                           </div>
                           <div class="right">
                             <div class="nameContainer">
@@ -84,10 +84,11 @@ function userID() {
 }
 
 function editPicture() {
+  console.log(document.querySelector('.newProfilePicture').src);
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
     method: "PUT",
     body: JSON.stringify ({
-      user_image: document.querySelector('.profilePicture').src,
+      user_image: document.querySelector('.newProfilePicture').src,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -267,7 +268,7 @@ function deleteProfile() {
   }
 
   function viewFile() {
-    const preview = document.querySelector('.profilePicture');
+    const preview = document.querySelector('.newProfilePicture');
     const file = document.querySelector('.profilePictureInput').files[0];
     const reader = new FileReader();
 

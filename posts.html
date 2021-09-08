@@ -47,7 +47,7 @@
                     <button class="closeImage">X</button>
                     <input class="editPostImageInput" placeholder="postImage" type="file" onchange="viewFile()">
                     <img class="editPostImage" height="300" src="" alt="">
-                    <button class="saveImage" onclick="editImage()">Save</button>
+                    <button class="saveImage" onclick="editImage(this.parentElement.parentElement.id)">Save</button>
                 </form>
             </div>
             <div class="editTitleContainer hideTitle">
@@ -61,35 +61,35 @@
                 <form onsubmit="return false">
                     <button class="closeIntro">X</button>
                     <input class="editIntro" placeholder="Intro" type="text">
-                    <button class="saveIntro" onclick="editIntro()">Save</button>
+                    <button class="saveIntro" onclick="editIntro(this.parentElement.parentElement.id)">Save</button>
                 </form>
             </div>
             <div class="editBodyContainer hideBody">
                 <form onsubmit="return false">
                     <button class="closeBody">X</button>
                     <input class="editBody" placeholder="Body" type="text">
-                    <button class="saveBody" onclick="editBody()">Save</button>
+                    <button class="saveBody" onclick="editBody(this.parentElement.parentElement.id)">Save</button>
                 </form>
             </div>
             <div class="editConclusionContainer hideConclusion">
                 <form onsubmit="return false">
                     <button class="closeConclusion">X</button>
                     <input class="editConclusion" placeholder="Conclusion" type="text">
-                    <button class="saveConclusion" onclick="editConclusion()">Save</button>
+                    <button class="saveConclusion" onclick="editConclusion(this.parentElement.parentElement.id)">Save</button>
                 </form>
             </div>
             <div class="editDateContainer hideDate">
                 <form onsubmit="return false">
                     <button class="closeDate">X</button>
                     <input class="editDateCreated" placeholder="Date Created (dd/mm/yyyy)" type="text">
-                    <button class="saveDate" onclick="editDate()">Save</button>
+                    <button class="saveDate" onclick="editDate(this.parentElement.parentElement.id)">Save</button>
                 </form>
             </div>
             <div class="editAuthorContainer hideAuthor">
                 <form onsubmit="return false">
                     <button class="closeAuthor">X</button>
                     <input class="editAuthor" placeholder="Author" type="text">
-                    <button class="saveAuthor" onclick="editAuthor()">Save</button>
+                    <button class="saveAuthor" onclick="editAuthor(this.parentElement.parentElement.id)">Save</button>
                 </form>
             </div>
             <div class="editIdContainer hideId">

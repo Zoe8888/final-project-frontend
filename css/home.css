@@ -102,7 +102,7 @@ body {
 .hideAdd,
 .hideContainer,
 .hideButtons {
-    display: none;
+    display: none !important;
 }
 
 .postModalContainer {
@@ -112,6 +112,12 @@ body {
     overflow-y: scroll;
     background-color: rgb(123, 151, 161);
     width: 100vw;
+}
+
+.postModal {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .blogPost {
@@ -136,15 +142,35 @@ body {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 2% 0;
+}
+
+.interact {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 2% 0;
+}
+
+.like,
+.comment {
+    font-size: 1rem;
+    padding: 3%;
+}
+
 .addCommentContainer {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     /* position: fixed; */
-    top: 25%;
+    /* top: 25%;
     right: 25%;
-    opacity: 100%;
+    opacity: 100%; */
     width: 50vw;
     height: 40vh;
     background-color: rgb(235, 235, 235);
@@ -160,4 +186,14 @@ body {
 .addCommentButtons {
     display: flex;
     flex-direction: row;
+}
+
+.commentContainer {
+    display: flex;
+    align-self: center;
+    color: rgb(123, 151, 161);
+    background-color: rgb(235, 235, 235);
+    border: 2px solid rgb(206, 205, 205);
+    border-radius: 2px;
+    width: 50vw;
 }

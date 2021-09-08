@@ -14,6 +14,7 @@ body {
     color: rgb(123, 151, 161);
     background-color: rgb(211, 207, 207);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
 }
 
 .navbar {
@@ -74,9 +75,32 @@ body {
     text-align: center;
 }
 
+.postImage {
+    position: relative;
+}
+
 .postImage img {
     height: 30vh;
     margin-top: 5%;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 30vh;
+    width: 100%;
+    color: rgb(211, 207, 207);
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 5%;
+}
+
+.overlay:hover {
+    opacity: 1;
 }
 
 .postModal {
@@ -107,6 +131,7 @@ body {
     width: 50vw;
 }
 
+.editImageContainer,
 .editTitleContainer,
 .editIntroContainer,
 .editBodyContainer,
@@ -123,6 +148,7 @@ body {
     height: 30vw;
 }
 
+.closeImage,
 .closeTitle,
 .closeIntro,
 .closeBody,
@@ -137,6 +163,28 @@ body {
     background-color: rgb(211, 207, 207);
     border-radius: 2px;
     border: 2px solid rgb(179, 177, 177);
+}
+
+.editPostImageInput {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 16vw;
+    width: 32vw;
+    border: 2px solid rgb(179, 177, 177);
+    border-radius: 2px;
+    color: rgb(123, 151, 161);
+    outline: none;
+}
+
+.editPostImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 16vw;
+    width: 20vw;
 }
 
 .editTitle,
@@ -156,6 +204,7 @@ body {
     outline: none;
 }
 
+.saveImage,
 .saveTitle,
 .saveIntro,
 .saveBody,
@@ -176,4 +225,14 @@ body {
 
 .fa-edit {
     margin-left: 1%;
+}
+
+.deletePost {
+    color: rgb(211, 207, 207);
+    background-color: rgb(123, 151, 161);
+    border-radius: 2px;
+    border: 2px solid rgb(103, 126, 134);
+    padding: 0.5%;
+    width: 10vw;
+    margin-bottom: 10%;
 }

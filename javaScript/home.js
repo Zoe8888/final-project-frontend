@@ -76,8 +76,10 @@ function viewPost(post_id) {
                                     <h3 class="conclusion">${post[5]}</h3>
                                 </div>
                                 <h3 class="author">Written by ${post[6]}</h3>
-                                <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
-                                <button class="comment" onclick="comment()">Comment</button>
+                                <div class="interact">
+                                    <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
+                                    <button class="comment" onclick="comment()">Comment</button>
+                                </div>
                             </div>`
             displayLikes(post[0])
             displayComments(post[0]);
@@ -134,7 +136,7 @@ function displayLikes(post_id) {
         likes.forEach((like) => {
             document.querySelector(
                 `.postModal`
-            ).innerHTML += `<div class="post">
+            ).innerHTML += `<div class="blogPost">
                                 <div class="likeContainer">
                                     <p>Liked by ${like[0]}</p>
                                 </div>
@@ -226,12 +228,10 @@ function addComment() {
 function comment() {
     let addComment = document.querySelector('.addCommentContainer')
     addComment.classList.toggle('hideAdd')
-    addComment.classList.toggle('cancelComment')
 }
 
 document.querySelector('.cancelComment').addEventListener('click', () => {
-    let addComment = document.querySelector('.addCommentContainer')
-    addComment.classList.toggle('hideAdd');
+    comment()
 })
 
 document.querySelector('.addCommentForm').addEventListener('submit', (e) => {
