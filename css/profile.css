@@ -47,6 +47,7 @@ body {
     border: 2px solid rgb(103, 126, 134);
     border-radius: 2px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .profilePicture {
@@ -54,11 +55,21 @@ body {
     border-radius: 2px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     width: 25vw;
-    margin: 7%;
+    height: 50vh;
+    position: absolute;
+    top: 7.5%;
+    left: 6%;
 }
 
 .editPicture {
-    width: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 7.8%;
+    left: 6.1%;
+    width: 25.2vw;
+    height: 50.3vh;
     opacity: 0;
     color: rgb(211, 207, 207);
     background-color: rgba(0, 0, 0, 0.6);
@@ -74,7 +85,9 @@ body {
     justify-content: center;
     width: 30vw;
     text-align: left;
-    margin-left: 4%;
+    position: absolute;
+    right: -8%;
+    top: 4%;
 }
 
 .nameContainer,
@@ -205,4 +218,21 @@ body {
 .delete:hover {
     width: 9vw;
     transition: 0.2s ease-in;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(123, 151, 161);
+    color: rgb(211, 207, 207);
+    border: 2px solid rgb(103, 126, 134);
+    border-radius: 2px;
+    width: 50vw;
+    height: 20vw;
+    font-size: 1.5rem;
 }

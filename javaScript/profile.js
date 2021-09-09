@@ -1,3 +1,11 @@
+document.querySelector('.profile-container').addEventListener('mouseover', () => {
+  document.querySelector('.profile-menu').classList.remove('hideMenu')
+})
+
+document.querySelector('.profile-container').addEventListener('mouseleave', () => {
+  document.querySelector('.profile-menu').classList.add('hideMenu')
+})
+
 function viewProfile() {
   if (window.localStorage["jwt-token"]) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/view-profile/${window.localStorage["username"]}/`, {

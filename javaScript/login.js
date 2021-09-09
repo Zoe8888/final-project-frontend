@@ -80,14 +80,13 @@ document.querySelector('.subscribe').addEventListener('submit', (e) => {
   subscribe()
 })
 
-function loginToggle() {
-  let login = document.querySelector('#login')
-  let regitser = document.querySelector('#subscribe')
-  login.classList.toggle("active");
-  regitser.classList.toggle("active");
-  if (regitser.classList.contains("active")) {
-    login.classList.add("hide");
-  } else {
-    regitser.classList.add("hide");
-  }
-}
+let switchSide = document.querySelectorAll('.switchSide');
+let logIn = document.querySelector('#login');
+let regitser = document.querySelector('#subscribe');
+
+switchSide.forEach((button) => {
+  button.addEventListener('click', () => {
+    regitser.classList.toggle('hide');
+    logIn.classList.toggle('active');
+  })
+})

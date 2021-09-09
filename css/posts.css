@@ -236,3 +236,21 @@ body {
     width: 10vw;
     margin-bottom: 10%;
 }
+
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(123, 151, 161);
+    color: rgb(211, 207, 207);
+    border: 2px solid rgb(103, 126, 134);
+    border-radius: 2px;
+    width: 50vw;
+    height: 20vw;
+    font-size: 1.5rem;
+}
