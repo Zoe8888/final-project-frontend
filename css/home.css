@@ -94,6 +94,20 @@ body.disable {
     right: 4%;
 }
 
+.searchedContainer {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchResult {
+    font-weight: 700;
+}
+
 #posts {
     display: flex;
     align-items: center;

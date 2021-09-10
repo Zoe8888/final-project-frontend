@@ -2,19 +2,58 @@ document.querySelector('.profile-container').addEventListener('click', () => {
     document.querySelector('.profile-menu').classList.toggle('hideMenu')
 })
 
-function search() {
-    let posts = []
-    let search = document.querySelector("#search").value;
-    console.log(search);
+document.querySelector('.search').addEventListener('submit', (e) => {
+    e.preventDefault()
+    search()
+})
 
-    let searched = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()));
-    console.log(searched);
-    if (searched.length == 0) {
-        document.querySelector(".post").innerHTML += `<div class="searchError">
-                                                        <h5 class="exitSearch">X</h5>
-                                                        <h2>Oops! None of our posts match your search.</h2>
-                                                      </div>`
-    }
+function search() {
+    let value = document.querySelector('#search').value
+    fetch(`https://shrouded-temple-45259.herokuapp.com/search/${value}/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+        posts = data.data;
+        document.querySelector(
+            ".searchedContainer").innerHTML = '';
+        if (posts.length == 0) {
+            document.querySelector(
+                ".searchedContainer")
+                .innerHTML += `<div class="searchResult">
+                                    <p>None of the posts match your search.</p>
+                                    <button class="clear" onclick=" document.querySelector('.searchResult').innerHTML = ''">Clear</button>
+                                </div>`
+        } else {
+            posts.forEach((post) => {
+                console.log(post);
+                document.querySelector(
+                    ".searchedContainer")
+                    .innerHTML += `<div class="searchResult" id="${post[0]}">
+                                        <p>${post[2]}</p>
+                                        <button class="viewResult">View</button>
+                                    </div>`
+                                    document.querySelectorAll('.viewResult').forEach((button) => {
+                                        button.addEventListener('click', (e) => {
+                                            viewPost(e.currentTarget.parentElement.id)
+                                            let post = document.querySelector('.postModalContainer')
+                                            post.classList.toggle('hide');
+                                            post.classList.toggle('closePost')
+                                            document.body.classList.toggle('disable');
+                                            window.location.href = '#top'
+                                        })
+                                    })       
+            })
+        }
+    })
+}
+
+function clear() {
+    document.querySelector('.searchResult').innerHTML = ""
 }
 
 function showPosts() {
@@ -98,15 +137,20 @@ function viewPost(post_id) {
                                     <h3 class="conclusion">${post[5]}</h3>
                                 </div>
                                 <h3 class="author">Written by ${post[6]}</h3>
-                                <div class="interact">
-                                    <button class="like" onclick="likePost(this)"><i class="fas fa-heart"></i></button>
-                                    <button class="comment" onclick="comment()">Comment</button>
+                                <div class="likes">
                                 </div>
-                                <div class="blogPost">
+                                <div class="interact">
+                                    <button class="like" onclick="if (this.classList.contains('active')) {
+                                        unlike(this)
+                                    } else {
+                                        likePost(this)
+                                    }"><i class="fas fa-heart"></i></button>
+                                    <button class="comment" onclick="comment()">Comment</button>
                                 </div>
                             </div>`
             displayLikes(post[0])
             displayComments(post[0]);
+            
         });
 
 }
@@ -131,6 +175,7 @@ function likePost(element) {
         .then((data) => {
                 console.log(data);
                 window.alert("Post liked")
+                element.classList.add('active')
                 displayLikes(post_id)
         })
     } else {
@@ -141,6 +186,29 @@ function likePost(element) {
                                 <h3>You need to be logged in to like this post. <br> Login or register <a href="login.html">here</a></h3>
                             </div>`
     }
+}
+
+function unlike(element) {
+    post_id = element.parentElement.parentElement.id;
+    username = window.localStorage['username'];
+    fetch("https://shrouded-temple-45259.herokuapp.com/like-post/", {
+        method: "PATCH",
+        body: JSON.stringify({
+            username: username,
+            post_id: post_id,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `jwt ${window.localStorage["jwt-token"]}`,
+        },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+            console.log(data);
+            window.alert("Post unliked")
+            element.classList.remove('active')
+            displayLikes(post_id)
+    })
 }
 
 function exit() {
@@ -160,15 +228,16 @@ function displayLikes(post_id) {
         likes = data.data;
         like_no = likes.length
         likes.forEach((like) => {
+            console.log(like)
             document.querySelectorAll('.like').forEach((button) => {
-                if (button.parentElement.parentElement.id == like.post_id) {
+                if (window.localStorage.username == like[0]) {
                     button.classList.add('active')
                 }
             });
         })
         if (like_no == 1) {
             document.querySelector(
-                `.postModal`
+                `.likes`
             ).innerHTML += `<div class="blogPost">
                                 <div class="likeContainer">
                                     <p>Liked by ${like_no} person</p>
@@ -176,7 +245,7 @@ function displayLikes(post_id) {
                             </div>`
         } else {
             document.querySelector(
-                `.postModal`
+                `.likes`
             ).innerHTML += `<div class="blogPost">
                                 <div class="likeContainer">
                                     <p>Liked by ${like_no} people</p>
