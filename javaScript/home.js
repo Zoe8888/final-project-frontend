@@ -158,7 +158,7 @@ function viewPost(post_id) {
 function likePost(element) {
     post_id = element.parentElement.parentElement.id
     console.log(post_id)
-    let username = window.localStorage["username"];
+    let username = window.localStorage["username"]
     if (window.localStorage["jwt-token"]) {
         fetch("https://shrouded-temple-45259.herokuapp.com/like-post/", {
             method: "POST",
@@ -227,6 +227,8 @@ function displayLikes(post_id) {
         console.log(data);
         likes = data.data;
         like_no = likes.length
+        document.querySelector(
+            ".likes").innerHTML = '';
         likes.forEach((like) => {
             console.log(like)
             document.querySelectorAll('.like').forEach((button) => {
@@ -275,7 +277,7 @@ function displayComments(post_id) {
                                 <div class="userComment" id=${comment[0]}>
                                     <p>${comment[1]}</p>
                                     <p class="commentUsername">${comment[2]}</p>
-                                    <button class="buttonsMenu"><i class="fas fa-ellipsis-h"></i></button>
+                                    <button class="buttonsMenu"><i class="fas fa-ellipsis-h ellipsis"></i></button>
                                     <div class="buttonsContainer hideButtons">
                                         <button class="editComment" onclick="updateComment(this)"><i class="fas fa-edit"></i></button>
                                         <button class="deleteComment" onclick=deleteComment(this)"><i class="fas fa-trash"></i></button>

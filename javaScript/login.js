@@ -46,11 +46,12 @@ document.querySelector('.login').addEventListener('submit', (e) => {
 })
 
 function subscribe() {
-  let name = document.querySelector('.name').value
-  let surname = document.querySelector('.surname').value
-  let email = document.querySelector('.email').value
-  let username = document.querySelector('.username').value
-  let password = document.querySelector('.password').value
+  let name = document.querySelector('.name').value;
+  let surname = document.querySelector('.surname').value;
+  let email = document.querySelector('.email').value;
+  let username = document.querySelector('.username').value;
+  let password = document.querySelector('.password').value;
+  console.log(document.querySelector('.name').value);
   fetch("https://shrouded-temple-45259.herokuapp.com/registration/", {
     method: "POST",
     body: JSON.stringify({

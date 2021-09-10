@@ -27,7 +27,7 @@ body {
     display: none;
 }
 
-#login.active{
+#login.active {
     display: block;
 }
 
@@ -47,7 +47,10 @@ body {
     background-color: rgb(235, 235, 235);
     height: 60vh;
     width: 60vw;
-    gap: 30px;
+    gap: 40px;
+    border: 2px solid rgb(160, 82, 51);
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .login {
@@ -56,7 +59,8 @@ body {
     gap: 40px;
 }
 
-.login input {
+.login input,
+.subscribe input {
     outline: none;
     background: none;
     border: none;
@@ -65,13 +69,12 @@ body {
     height: 5vh;
 }
 
-.login input::placeholder {
+.login input::placeholder,
+.subscribe input::placeholder {
     color: rgb(179, 93, 59);
 }
 
-.loginButtin 
-
-.subscribe-container {
+.subscribeContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -82,10 +85,22 @@ body {
     height: 60vh;
     width: 60vw;
     gap: 20px;
+    border: 2px solid rgb(160, 82, 51);
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .subscribe {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.loginButton,
+.subscribeButton {
+    background-color: rgb(179, 93, 59);
+    color: rgb(235, 235, 235);
+    border: 2px solid rgb(160, 82, 51);
+    border-radius: 2px;
+    height: 5vh;
 }

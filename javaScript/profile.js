@@ -45,7 +45,7 @@ function viewProfile() {
                             </div>
                             <div class="usernameContainer">
                               <p class="profile-username">Username: ${user[5]}</p>
-                              <i class="fas fa-edit"></i>
+                              <i class="fas fa-edit" onclick="toggleUsername()"></i>
                             </div>
                             <div class="passwordContainer">
                               <p class="profile-password">Password: ${user[6]}</p>
@@ -214,6 +214,16 @@ function toggleId() {
 document.querySelector('.closeId').addEventListener('click', () => {
   let edit = document.querySelector('.editIdContainer')
   edit.classList.toggle('hideId');
+})
+
+function toggleUsername() {
+  let container = document.querySelector('.editUsernameContainer')
+  container.classList.toggle('hideUsername')
+}
+
+document.querySelector('.closeUsername').addEventListener('click', () => {
+  let edit = document.querySelector('.editUsernameContainer')
+  edit.classList.toggle('hideUsername');
 })
 
 function editPassword() {

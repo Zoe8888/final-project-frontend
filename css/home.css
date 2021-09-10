@@ -18,6 +18,7 @@ body {
     object-fit: cover;
     min-height: 100vh;
     font-family: "Roboto Mono";
+    font-weight: 700;
 }
 
 body.disable {
@@ -92,6 +93,10 @@ body.disable {
     position: absolute;
     top: 28%;
     right: 4%;
+}
+
+#search {
+    height: 4vh;
 }
 
 .searchedContainer {
@@ -237,7 +242,7 @@ body.disable {
 .comment {
     font-size: 1rem;
     padding: 3%;
-    color: rgb(206, 205, 205);
+    color: rgb(133, 132, 132);
 }
 
 .like.active {
@@ -311,6 +316,31 @@ body.disable {
     border: 2px solid rgb(206, 205, 205);
     border-radius: 2px;
     width: 50vw;
+}
+
+.ellipsis,
+.editComment,
+.deleteComment {
+    color: rgb(103, 126, 134);
+    border: none;
+}
+
+.edit {
+    color: rgb(123, 151, 161);
+    border: 2px solid rgb(139, 138, 138);
+    height: 5vh;
+    outline: none;
+}
+
+.edit::placeholder {
+    color: rgb(123, 151, 161);
+}
+
+.saveEditedComment,
+.cancel {
+    background-color: rgb(123, 151, 161);
+    color: rgb(190, 190, 190);
+    border: 2px solid rgb(103, 126, 134);
 }
 
 .error,
