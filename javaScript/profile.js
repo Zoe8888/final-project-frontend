@@ -1,9 +1,5 @@
-document.querySelector('.profile-container').addEventListener('mouseover', () => {
-  document.querySelector('.profile-menu').classList.remove('hideMenu')
-})
-
-document.querySelector('.profile-container').addEventListener('mouseleave', () => {
-  document.querySelector('.profile-menu').classList.add('hideMenu')
+document.querySelector('.profile-container').addEventListener('click', () => {
+  document.querySelector('.profile-menu').classList.toggle('hideMenu')
 })
 
 function viewProfile() {
@@ -56,7 +52,6 @@ function viewProfile() {
                               <i class="fas fa-edit" onclick="togglePassword()"></i>
                             </div>
                             <div class="profile-buttons">
-                                <button class="signOut" onclick="signOut()">Sign Out</button>
                                 <button class="delete">Delete Profile</button>
                             </div>
                           </div>

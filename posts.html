@@ -11,12 +11,13 @@
 <body>
         <!--Nav Bar-->
         <nav id="navContainer">
+            <h2 class="name">Diary of the Hodophiles</h2>
             <ul class="navbar">
                 <li><a href="/index.html">HOME</a></li>
                 <li><a href="/about.html">ABOUT US</a></li>
                 <div class="profile-container">
                     <li class="account">ACCOUNT</li>
-                    <div class="profile-menu">
+                    <div class="profile-menu hideMenu">
                         <li><a href="/profile.html">PROFILE</a></li>
                         <li><a href="/posts.html">POSTS</a></li>
                     </div>
@@ -90,13 +91,6 @@
                     <button class="closeAuthor">X</button>
                     <input class="editAuthor" placeholder="Author" type="text">
                     <button class="saveAuthor" onclick="editAuthor(this.parentElement.parentElement.id)">Save</button>
-                </form>
-            </div>
-            <div class="editIdContainer hideId">
-                <form onsubmit="return false">
-                    <button class="closeId">X</button>
-                    <input class="editId" placeholder="User ID" type="text">
-                    <button class="saveId">Save</button>
                 </form>
             </div>
         </section>

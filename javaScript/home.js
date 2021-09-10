@@ -2,6 +2,21 @@ document.querySelector('.profile-container').addEventListener('click', () => {
     document.querySelector('.profile-menu').classList.toggle('hideMenu')
 })
 
+function search() {
+    let posts = []
+    let search = document.querySelector("#search").value;
+    console.log(search);
+
+    let searched = posts.filter(post => post.title.toLowerCase().includes(search.toLowerCase()));
+    console.log(searched);
+    if (searched.length == 0) {
+        document.querySelector(".post").innerHTML += `<div class="searchError">
+                                                        <h5 class="exitSearch">X</h5>
+                                                        <h2>Oops! None of our posts match your search.</h2>
+                                                      </div>`
+    }
+}
+
 function showPosts() {
     fetch("https://shrouded-temple-45259.herokuapp.com/show-posts/", {
         method: "GET",

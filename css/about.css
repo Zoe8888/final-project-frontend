@@ -1,8 +1,23 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
     background-color: rgb(179, 93, 59);
+    font-family: "Roboto Mono";
+}
+
+.name {
+    font-family: "Caveat";
+    position: absolute;
+    left: 3%;
+    top: 21%;
+    color: rgb(155, 81, 52);
 }
 
 #navContainer {
@@ -10,23 +25,61 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
+    height: 10vh;
+    max-height: 10vh;
     margin-bottom: 10%;
-    background-color: rgb(211, 207, 207);
+    background-color: rgb(235, 235, 235);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     list-style: none;
     text-decoration: none;
-    gap: 10px;
+    gap: 40px;
+    height: 100%;
+    font-weight: 700;
 }
 
 .navbar a,
 .navbar li {
-    color: rgb(202, 105, 67);
+    color: rgb(179, 93, 59);
     text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.profile-container {
+    background-color: transparent;
+    height: 100%;
+}
+
+.navbar a:hover,
+.navbar li:hover {
+    background-color: rgb(179, 93, 59);
+    color: rgb(235, 235, 235);
+    transition: 0.05s ease-in;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 43.9%;
+    display: inline-block;
+    width: 9vw;
+    background-color: rgb(235, 235, 235);
+    padding: 1% 0;
+}
+
+.hideMenu {
+    display: none;
 }
 
 #about {
@@ -58,7 +111,24 @@ body {
 }
 
 .hodophile img {
+    margin-top: 2%;
     margin-left: 2%;
     width: 50vw;
     border-radius: 2px;
+}
+
+.question {
+    font-weight: lighter;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 4%;
+}
+
+.contact img {
+    margin-right: 4%;
 }

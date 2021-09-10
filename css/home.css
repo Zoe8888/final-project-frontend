@@ -1,7 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+button {
+    font-family: "Roboto Mono";
+    font-weight: 700;
 }
 
 body {
@@ -9,10 +17,19 @@ body {
     background-attachment: fixed;
     object-fit: cover;
     min-height: 100vh;
+    font-family: "Roboto Mono";
 }
 
 body.disable {
     overflow: hidden;
+}
+
+.name {
+    font-family: "Caveat";
+    position: absolute;
+    left: 3%;
+    top: 21%;
+    color: rgb(103, 126, 134);
 }
 
 #navContainer {
@@ -37,6 +54,7 @@ body.disable {
     text-decoration: none;
     gap: 40px;
     height: 100%;
+    font-weight: 700;
 }
 
 .navbar a,
@@ -63,11 +81,17 @@ body.disable {
 .profile-menu {
     position: absolute;
     top: 100%;
-    right: 42.8%;
+    right: 43.9%;
     display: inline-block;
-    width: 9.2vw;
+    width: 9vw;
     background-color: rgb(235, 235, 235);
     padding: 1% 0;
+}
+
+.search {
+    position: absolute;
+    top: 28%;
+    right: 4%;
 }
 
 #posts {

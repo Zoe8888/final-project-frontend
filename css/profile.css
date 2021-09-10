@@ -1,8 +1,28 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+button {
+    font-family: "Roboto Mono";
+    font-weight: 700;
+}
+
+body {
     background-image: url(/images/map.jpg);
+    font-family: "Roboto Mono";
+}
+
+.name {
+    font-family: "Caveat";
+    position: absolute;
+    left: 3%;
+    top: 21%;
+    color: rgb(103, 126, 134);
 }
 
 #navContainer {
@@ -10,24 +30,55 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
+    height: 10vh;
+    max-height: 10vh;
     margin-bottom: 10%;
-    background-color: rgb(211, 207, 207);
+    background-color: rgb(235, 235, 235);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     list-style: none;
     text-decoration: none;
-    gap: 10px;
+    gap: 40px;
+    height: 100%;
+    font-weight: 700;
 }
 
 .navbar a,
 .navbar li {
-    color: rgb(123, 151, 161);;
+    color: rgb(123, 151, 161);
     text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.profile-container {
+    background-color: transparent;
+    height: 100%;
+}
+
+.navbar a:hover,
+.navbar li:hover {
+    background-color: rgb(123, 151, 161);
+    color: rgb(235, 235, 235);
+}
+
+.profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 43.9%;
+    display: inline-block;
+    width: 9vw;
+    background-color: rgb(235, 235, 235);
+    padding: 1% 0;
 }
 
 .profileContainer {
@@ -54,7 +105,7 @@ body {
     border: 2px solid rgb(103, 126, 134);
     border-radius: 2px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    width: 25vw;
+    width: 22vw;
     height: 50vh;
     position: absolute;
     top: 7.5%;
@@ -68,7 +119,7 @@ body {
     position: absolute;
     top: 7.8%;
     left: 6.1%;
-    width: 25.2vw;
+    width: 22.2vw;
     height: 50.3vh;
     opacity: 0;
     color: rgb(211, 207, 207);
@@ -88,6 +139,7 @@ body {
     position: absolute;
     right: -8%;
     top: 4%;
+    gap: 20px;
 }
 
 .nameContainer,
@@ -102,6 +154,7 @@ body {
     justify-content: center;
 }
 
+.hideMenu,
 .hidePicture,
 .hideName,
 .hideSurname,
@@ -184,10 +237,6 @@ body {
     color: rgb(206, 204, 204);
 }
 
-/* .editPicture {
-    opacity: 0;
-} */
-
 .user-email {
     text-align: center;
 }
@@ -203,13 +252,26 @@ body {
     margin-top: 2%;
 }
 
-.signOut,
+.signOut {
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    height: 6vh;
+    padding: 1%;
+    color: rgb(211, 207, 207);
+    background-color: rgb(123, 151, 161);
+    border-radius: 2px;
+    border: 2px solid rgb(103, 126, 134);
+    display: flex;
+    align-items: center;
+}
+
 .delete {
     color: rgb(211, 207, 207);
     background-color: rgb(123, 151, 161);
     margin: 0 2%;
     padding: 2%;
-    width: 8vw;
+    width: 10vw;
     border-radius: 2px;
     border: 2px solid rgb(103, 126, 134);
 }

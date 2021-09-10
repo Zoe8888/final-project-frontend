@@ -1,8 +1,23 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
     background-image: url(/images/map.jpg);
+    font-family: "Roboto Mono";
+}
+
+.name {
+    font-family: "Caveat";
+    position: absolute;
+    left: 3%;
+    top: 21%;
+    color: rgb(103, 126, 134);
 }
 
 #navContainer {
@@ -10,26 +25,56 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
+    height: 10vh;
+    max-height: 10vh;
     margin-bottom: 10%;
-    color: rgb(123, 151, 161);
-    background-color: rgb(211, 207, 207);
+    background-color: rgb(235, 235, 235);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    display: flex;
+    justify-content: center;
     z-index: 100;
 }
 
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     list-style: none;
     text-decoration: none;
-    gap: 10px;
+    gap: 40px;
+    height: 100%;
+    font-weight: 700;
 }
 
 .navbar a,
 .navbar li {
     color: rgb(123, 151, 161);
     text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.profile-container {
+    background-color: transparent;
+    height: 100%;
+}
+
+.navbar a:hover,
+.navbar li:hover {
+    background-color: rgb(123, 151, 161);
+    color: rgb(235, 235, 235);
+}
+
+.profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 43.9%;
+    display: inline-block;
+    width: 9vw;
+    background-color: rgb(235, 235, 235);
+    padding: 1% 0;
 }
 
 .addPost {
@@ -49,6 +94,7 @@ body {
     transition: 0.2s ease-in;
 }
 
+.hideMenu,
 .hide,
 .hideCreate {
     display: none;
@@ -191,7 +237,7 @@ body {
 .editIntro,
 .editBody,
 .editConclusion,
-.editDate,
+.editDateCreated,
 .editAuthor {
     position: absolute;
     top: 35%;
