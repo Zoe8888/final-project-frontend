@@ -12,22 +12,25 @@
     <!--Login Section-->
     <section id="login" class="active">
         <div class="login-container">
-            <h1>Welcome back to <br> <span class="diary">Diary of the Hodophiles</span></h1>
+            <h1 class="loginHeader">Welcome back to <br> <span class="diary">Diary of the Hodophiles</span></h1>
             <form class="login">
                 <div class="loginInputs">
                     <input id="username" type="text" placeholder="username" required>
                     <input id="password" type="password" placeholder="password" required>
                 </div>
-                <button class="loginButton">Log In</button>
+                <div class="loginBtnContainer">
+                    <button class="loginButton">Log In</button>
+                </div>
             </form>
-            <div>
+            <div class="notSubscribed">
                 <h3>Don't have an account? Subscribe <span class="switchSide">here</span></h3>
             </div>
         </div>
     </section>
+<!--Register Section-->
     <section id="subscribe" class="hide">
         <div class="subscribeContainer">
-            <h1>Welcome to <br> <span class="diary">Diary of the Hodophiles</span></h1>
+            <h1 class="subHeader">Welcome to <br> <span class="diary">Diary of the Hodophiles</span></h1>
             <form class="subscribe">
                 <input class="name" type="text" placeholder="name" required>
                 <input class="surname" type="text" placeholder="surname" required>
@@ -36,7 +39,7 @@
                 <input class="password" type="password" placeholder="password" required>
                 <button class="subscribeButton">Subscribe</button>
             </form>
-            <div>
+            <div class="alreadySubscribed">
                 <h3>Already subscribed? Sign in <span class="switchSide">here</span></h3>
             </div>
         </div>

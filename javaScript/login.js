@@ -1,3 +1,4 @@
+// Login function that verifies if a user exists. If they do exist it redirects them to the main page but if not it takes them to the register function
 function login() {
   username = document.querySelector('#username').value
   password = document.querySelector('#password').value
@@ -36,6 +37,8 @@ function login() {
         storage.setItem("username", username);
         storage.setItem("password", password);
         window.location.href = "/index.html";
+      } else {
+        document.querySelector
       }
     });
 }
@@ -45,6 +48,7 @@ document.querySelector('.login').addEventListener('submit', (e) => {
   login()
 })
 
+// A register function that saves the users details to the database
 function subscribe() {
   let name = document.querySelector('.name').value;
   let surname = document.querySelector('.surname').value;
@@ -85,6 +89,7 @@ let switchSide = document.querySelectorAll('.switchSide');
 let logIn = document.querySelector('#login');
 let regitser = document.querySelector('#subscribe');
 
+// This toggle switches between the login and register function
 switchSide.forEach((button) => {
   button.addEventListener('click', () => {
     regitser.classList.toggle('hide');

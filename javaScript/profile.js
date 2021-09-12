@@ -1,7 +1,9 @@
+// Creates a drop down menu when the user clicks on the account option in the navbar
 document.querySelector('.profile-container').addEventListener('click', () => {
   document.querySelector('.profile-menu').classList.toggle('hideMenu')
 })
 
+// Displays the users profile details if they are logged in. If not then they have the option to either log in or create an account
 function viewProfile() {
   if (window.localStorage["jwt-token"]) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/view-profile/${window.localStorage["username"]}/`, {
@@ -70,6 +72,7 @@ function viewProfile() {
 
 viewProfile();
 
+// This saves the user ID to the local storage
 function userID() {
   fetch(`https://shrouded-temple-45259.herokuapp.com/view-profile/${window.localStorage["username"]}/`, {
     method: "GET",
@@ -86,6 +89,7 @@ function userID() {
   })
 }
 
+// This allows the user to edit their profile picture
 function editPicture() {
   console.log(document.querySelector('.newProfilePicture').src);
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
@@ -106,17 +110,20 @@ function editPicture() {
   });
 }
 
+// Toggle to diplay the edit picture container
 function togglePicture () {
   let container = document.querySelector('.editPictureContainer')
   container.classList.toggle("hidePicture");
 }
 
+// Toggle to close the edit picture container
 document.querySelector('.closePicture').addEventListener('click', () => {
   let edit = document.querySelector('.editPictureContainer')
   edit.classList.toggle('hidePicture');
 })
 
 
+// This allows the user to edit their first name
 function editName() {
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
     method: "PUT",
@@ -136,17 +143,19 @@ function editName() {
   });
 }
 
+// Toggle to diplay the edit name container
 function toggleName() {
   let container = document.querySelector('.editNameContainer')
   container.classList.toggle("hideName");
 }
 
+// Toggle to close the edit name container
 document.querySelector('.closeName').addEventListener('click', () => {
   let edit = document.querySelector('.editNameContainer')
   edit.classList.toggle('hideName');
 })
 
-
+// This allows the user to edit their second name
 function editSurname() {
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
     method: "PUT",
@@ -166,17 +175,19 @@ function editSurname() {
   });
 }
 
+// Toggle to diplay the edit surname container
 function toggleSurname() {
   let container = document.querySelector('.editSurnameContainer')
   container.classList.toggle("hideSurname");
 }
 
+// Toggle to close the edit surname container
 document.querySelector('.closeSurname').addEventListener('click', () => {
   let edit = document.querySelector('.editSurnameContainer')
   edit.classList.toggle('hideSurname');
 })
 
-
+// This allows the user to edit their email address
 function editEmail() {
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
     method: "PUT",
@@ -196,36 +207,43 @@ function editEmail() {
   });
 }
 
+// Toggle to diplay the edit email container
 function toggleEmail() {
   let container = document.querySelector('.editEmailContainer')
   container.classList.toggle("hideEmail");
 }
 
+// Toggle to close the edit email container
 document.querySelector('.closeEmail').addEventListener('click', () => {
   let edit = document.querySelector('.editEmailContainer')
   edit.classList.toggle('hideEmail');
 })
 
+// Toggle to diplay the edit user id container
 function toggleId() {
   let container = document.querySelector('.editIdContainer')
   container.classList.toggle('hideId')
 }
 
+// Toggle to close the edit user id container
 document.querySelector('.closeId').addEventListener('click', () => {
   let edit = document.querySelector('.editIdContainer')
   edit.classList.toggle('hideId');
 })
 
+// Toggle to diplay the edit username container
 function toggleUsername() {
   let container = document.querySelector('.editUsernameContainer')
   container.classList.toggle('hideUsername')
 }
 
+// Toggle to close the edit username container
 document.querySelector('.closeUsername').addEventListener('click', () => {
   let edit = document.querySelector('.editUsernameContainer')
   edit.classList.toggle('hideUsername');
 })
 
+// This allows the user to edit their password
 function editPassword() {
   fetch(`https://shrouded-temple-45259.herokuapp.com/edit-profile/${window.localStorage["username"]}/`, {
     method: "PUT",
@@ -245,16 +263,19 @@ function editPassword() {
   });
 }
 
+// Toggle to diplay the edit password container
 function togglePassword() {
   let container = document.querySelector('.editPasswordContainer')
   container.classList.toggle("hidePassword");
 }
 
+// Toggle to close the edit password container
 document.querySelector('.closePassword').addEventListener('click', () => {
   let edit = document.querySelector('.editPasswordContainer')
   edit.classList.toggle('hidePassword');
 })
 
+// Allows the user to delete their profile and redirects them to the home page of the site
 function deleteProfile() {
     fetch(
       `https://shrouded-temple-45259.herokuapp.com/delete-profile/${window.localStorage["username"]}/`,
@@ -272,27 +293,29 @@ function deleteProfile() {
         window.location.href = "/index.html";
         window.alert("Your profile has been deleted successfully.");
       });
-  }
+}
 
-  function signOut() {
-    window.localStorage.removeItem("jwt-token");
-    window.location.href = "/login.html";
-    document.getElementsByClassName('signOutContainer').classList.add('hide');
-  }
+// Signs the user out and redirects them to the login page
+function signOut() {
+  window.localStorage.removeItem("jwt-token");
+  window.location.href = "/login.html";
+  document.getElementsByClassName('signOutContainer').classList.add('hide');
+}
 
-  function viewFile() {
-    const preview = document.querySelector('.newProfilePicture');
-    const file = document.querySelector('.profilePictureInput').files[0];
-    const reader = new FileReader();
+// Allows files that are uploaded to be displayed and saved
+function viewFile() {
+  const preview = document.querySelector('.newProfilePicture');
+  const file = document.querySelector('.profilePictureInput').files[0];
+  const reader = new FileReader();
 
-    reader.addEventListener(
-      "load",
-      function() {
-        preview.src = reader.result;
-      },
-      false
-    );
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+  reader.addEventListener(
+    "load",
+    function() {
+      preview.src = reader.result;
+    },
+    false
+  );
+  if (file) {
+    reader.readAsDataURL(file);
   }
+}

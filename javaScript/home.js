@@ -1,12 +1,15 @@
+// Creates a drop down menu when the user clicks on the account option in the navbar
 document.querySelector('.profile-container').addEventListener('click', () => {
     document.querySelector('.profile-menu').classList.toggle('hideMenu')
 })
 
+// Prevents the page from refreshing after every search a user makes
 document.querySelector('.search').addEventListener('submit', (e) => {
     e.preventDefault()
     search()
 })
 
+// A function that allows the user to search for a specific post
 function search() {
     let value = document.querySelector('#search').value
     fetch(`https://shrouded-temple-45259.herokuapp.com/search/${value}/`, {
@@ -52,10 +55,12 @@ function search() {
     })
 }
 
+// Clears results from the search bar
 function clear() {
     document.querySelector('.searchResult').innerHTML = ""
 }
 
+// Shows all the posts created by users
 function showPosts() {
     fetch("https://shrouded-temple-45259.herokuapp.com/show-posts/", {
         method: "GET",
@@ -99,6 +104,7 @@ function showPosts() {
 
 showPosts();
 
+// Toggle which opens up a post the user selected
 function openPost (e) {
     let post = document.querySelector('.postModalContainer')
     post.classList.toggle('hide');
@@ -106,6 +112,7 @@ function openPost (e) {
     document.body.classList.toggle('disable');
 }
 
+// This function displays a single post and includes both likes and comments
 function viewPost(post_id) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/view-post/${post_id}/`, {
         method: "GET",
@@ -155,6 +162,7 @@ function viewPost(post_id) {
 
 }
 
+// This function allows the user to like a post if they have an account and are logged in
 function likePost(element) {
     post_id = element.parentElement.parentElement.id
     console.log(post_id)
@@ -188,6 +196,7 @@ function likePost(element) {
     }
 }
 
+// This allows the user to unlike a post if they have an account and are logged in
 function unlike(element) {
     post_id = element.parentElement.parentElement.id;
     username = window.localStorage['username'];
@@ -211,10 +220,12 @@ function unlike(element) {
     })
 }
 
+// Toggle that closes the login modal
 function exit() {
     document.querySelector('.login').remove()
 }
 
+// This function shows all the likes the post currently has
 function displayLikes(post_id) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/display-likes/${post_id}/`, {
         method: "GET",
@@ -257,6 +268,7 @@ function displayLikes(post_id) {
     })
 }
 
+// This displays all the comments the post currently has. It includes both the comment and the username
 function displayComments(post_id) {
     fetch(`https://shrouded-temple-45259.herokuapp.com/display-comments/${post_id}/`, {
         method: "GET",
@@ -306,11 +318,13 @@ function displayComments(post_id) {
     })
 }
 
+// A toggle that reveals a options to edit or delete a comment
 function buttons() {
     let menu = document.querySelectorAll('.buttonsContainer')
     menu.classList.toggle('hideButtons')
 }
 
+// A function that allows the user to comment on a post if they are logged in to their account
 function addComment() {
     let username = window.localStorage['username'];
     let post_id = document.querySelector('.blogPost').id;
@@ -344,6 +358,7 @@ function addComment() {
     }
 }
 
+// Toggle that opens up the add comment container
 function comment() {
     let addComment = document.querySelector('.addCommentContainer')
     addComment.classList.toggle('hideAdd')
@@ -357,6 +372,7 @@ document.querySelector('.addCommentForm').addEventListener('submit', (e) => {
     e.preventDefault()
 })
 
+// This allows the user to edit one of their own comments if they are logged in
 function editComment() {
     username = window.localStorage['commentUsername']
     comment_id = document.querySelector('.editCommentContainer').id
@@ -398,10 +414,12 @@ function editComment() {
     }
 }
 
+// Allows the user to exit out the error message
 function exitError() {
     document.querySelector('.error').remove()
 }
 
+// Toggle thar opens and closes the edit comment container
 function updateComment (e) {
     let editComment = document.querySelector('.editCommentContainer')
     editComment.classList.toggle('hideContainer');
@@ -415,6 +433,7 @@ document.querySelector('.editForm').addEventListener('submit', (e) => {
     editComment(e.currentTarget.parentElement.parentElement.id);
 })
 
+// This allows the user to delete one of their comments if they are logged in to their account
 function deleteComment(comment_id) {
     username = window.localStorage['commentUsername']
     console.log(username)
@@ -452,6 +471,7 @@ function deleteComment(comment_id) {
     }
 }
 
+// Exits out of the delete error message
 function exitDelete() {
     document.querySelector('.deleteError').remove()
 }
