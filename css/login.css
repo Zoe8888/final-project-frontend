@@ -79,6 +79,15 @@ body {
     color: rgb(179, 93, 59);
 }
 
+.loginButton {
+    width: 20vw;
+}
+
+.loginBtnContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .subscribeContainer {
     display: flex;
     justify-content: center;
@@ -108,6 +117,7 @@ body {
     border: 2px solid rgb(160, 82, 51);
     border-radius: 2px;
     height: 5vh;
+    font-family: "Caveat";
 }
 
 .switchSide {
@@ -115,7 +125,13 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-    .subHeader,
+    .subHeader {
+        font-size: 3rem;
+        text-align: center;
+        position: absolute;
+        top: 5%;
+    }
+
     .loginHeader {
         font-size: 3rem;
         text-align: center;
@@ -183,7 +199,14 @@ body {
     }
 
     .login {
-        height: 27vh;
+        height: 20vh;
+    }
+
+    .loginInputs {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
     }
 
     .subscribe {
@@ -213,6 +236,47 @@ body {
         font-size: 1.4rem;
         text-align: center;
         width: 45vw;
+    }
+}
+
+@media screen and (max-width: 681px) {
+    .subscribeContainer {
+        height: 75vh;
+    }
+
+    .subHeader {
+        position: absolute;
+        top: 6%;
+    }
+
+    .loginHeader,
+    .subHeader {
+        font-size: 1.8rem;
+    }
+
+    .login {
+        height: 25vh;
+    }
+
+    .loginInputs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .login input,
+    .subscribe input {
+        font-size: 1rem;
+    }
+
+    .loginButton,
+    .subscribeButton {
+        font-size: 1.5rem;
+    }
+
+    .notSubscribed,
+    .alreadySubscribed {
+        font-size: 1rem;
     }
 }
 
@@ -252,7 +316,8 @@ body {
         font-size: 0.9rem;
     }
 
-    .notSubscribed {
+    .notSubscribed,
+    .subscribeButton {
         font-size: 1rem;
     }
 }
@@ -271,34 +336,35 @@ body {
         height: 55vh;
     }
 
-    .loginHeader,
-    .subHeader {
+    .subscribeContainer {
+        height: 70vh;
+    }
+
+    .loginHeader {
         font-size: 1.1rem;
     }
 
     .subHeader {
         position: absolute;
         top: 6%;
-    }
-
-    .login input {
         font-size: 1rem;
     }
 
-    .subscribe input {
-        font-size: 0.8rem;
-    }
-
+    .subscribe input,
     .login input {
-        font-size: 0.9rem;
-    }
-
-    .subscribe input {
         font-size: 0.8rem;
     }
 
-    .subscribeButton, .loginButton {
+    .loginInputs {
+        gap: 11px;
+    }
+
+    .loginButton {
         font-size: 1.3rem;
+    }
+
+    .subscribeButton {
+        font-size: 1rem;
     }
 
     .notSubscribed {
@@ -306,7 +372,7 @@ body {
     }
 
     .alreadySubscribed {
-        font-size: 0.6rem;
+        font-size: 0.67rem;
     }
 }
 
@@ -317,6 +383,11 @@ body {
 
     .login {
         height: 20vh;
+    }
+
+    .subscribe {
+        position: absolute;
+        top: 24%;
     }
 
     .subHeader,
@@ -386,5 +457,87 @@ body {
 
     .notSubscribed {
         font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .subscribe {
+        position: absolute;
+        top: 22%;
+    }
+
+    .subscribeContainer {
+        height: 70vh;
+    }
+
+    .login-container {
+        height: 55vh;
+    }
+
+    .loginHeader, .subHeader {
+        font-size: 1.4rem;
+    }
+    
+    .login {
+        height: 22vh;
+    }
+
+    .loginButton, .subscribeButton {
+        font-size: 1.4rem;
+    }
+
+    .notSubscribed, .alreadySubscribed {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .subscribeContainer {
+        height: 65vh;
+    }
+
+    .login-container {
+        height: 50vh;
+    }
+
+    .loginHeader {
+        position: absolute;
+        top: 9%;
+    }
+
+    .loginHeader, .subHeader {
+        font-size: 1rem;
+    }
+
+    .login {
+        height: 20vh;
+    }
+
+    .loginInputs {
+        gap: 15px;
+    }
+
+    .subscribe {
+        position: absolute;
+        top: 20%;
+    }
+
+    .subscribe input,
+    .login input {
+        font-size: 0.6rem;
+        font-weight: 700;
+    }
+
+    .loginButton, .subscribeButton {
+        font-size: 1rem;
+    }
+
+    .loginBtnContainer {
+        position: absolute;
+        bottom: 26%;
+    }
+
+    .notSubscribed, .alreadySubscribed {
+        font-size: 0.6rem;
     }
 }
