@@ -10,6 +10,7 @@
 body {
     background-color: rgb(179, 93, 59);
     font-family: "Roboto Mono";
+    overflow-x: hidden;
 }
 
 .name {
@@ -33,6 +34,7 @@ body {
     overflow: visible;
     display: flex;
     justify-content: center;
+    z-index: 100;
 }
 
 .navbar {
@@ -99,8 +101,11 @@ body {
 
 .intro img {
     margin-right: 4%;
-    width: 50vw;
+    margin-top: 2%;
+    height: 35vw;
     border-radius: 2px;
+    border: 2px solid rgb(155, 81, 52);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .hodophile {
@@ -113,8 +118,10 @@ body {
 .hodophile img {
     margin-top: 2%;
     margin-left: 2%;
-    width: 50vw;
+    height: 35vw;
     border-radius: 2px;
+    border: 2px solid rgb(155, 81, 52);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .question {
@@ -131,4 +138,192 @@ body {
 
 .contact img {
     margin-right: 4%;
+    height: 35vw;
+    border-radius: 2px;
+    border: 2px solid rgb(155, 81, 52);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #navContainer {
+        height: 8vh;
+    }
+
+    .navbar {
+        font-size: 1.5rem;
+        position: absolute;
+        right: 4%;
+        gap: 20px;
+    }
+
+    .name {
+        position: absolute;
+        left: 5%;
+        top: 35%;
+    }
+
+    .profile-menu {
+        right: 39.9%;
+        width: 14vw;
+    }
+
+    .intro img {
+        margin-top: 8%;
+    }
+
+    .hodophile {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .name {
+        left: 4%;
+        font-size: 1.2rem;
+    }
+
+    .navbar {
+        gap: 0;
+        font-size: 1.2rem;
+    }
+
+    .profile-menu {
+        width: 15vw;
+    }
+
+    .intro,
+    .contact {
+        font-size: 1rem;
+    }
+
+    .hodophile {
+        font-size: 0.67rem;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #navContainer {
+        height: 10vh;
+        width: 100vw;
+    }
+
+    .name {
+        left: 3%;
+        font-size: 0.9rem;
+    }
+
+    .navbar {
+        gap: 0;
+        font-size: 0.8rem;
+    }
+
+    .profile-menu {
+        width: 17vw;
+        right: 37.9%;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #navContainer {
+        height: 10vh;
+        width: 100vw;
+    }
+
+    .profile-menu {
+        right: 35.9%;
+    }
+
+    .name {
+        left: 35%;
+        font-size: 1rem;
+        top: 14%;
+    }
+
+    .navbar {
+        font-size: 0.6rem;
+        top: 19%;
+        font-weight: 900;
+    }
+
+    .profile-menu {
+        top: 80%;
+        right: 36.9%;
+        width: 18vw;
+    }
+
+    .intro {
+        flex-direction: column;
+        font-size: 0.7rem;
+    }
+
+    .intro h1 {
+        margin-top: 2%;
+    }
+
+    .hodophile {
+        font-size: 0.67rem;
+        flex-direction: column;
+    }
+
+    .hodophile img {
+        margin-left: 0;
+        position: absolute;
+        top: 47%;
+    }
+
+    .hodophile h3 {
+        margin: 0px 4%;
+        position: absolute;
+        bottom: 9%;
+    }
+
+    .contact {
+        margin-bottom: 5%;
+    }
+
+    .contact img {
+        position: absolute;
+        bottom: -13%;
+    }
+
+    .contact h3 {
+        position: absolute;
+        bottom: -31%;
+        margin: 2% 4%;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .profile-menu {
+        width: 20vw;
+    }
+
+    .intro {
+        font-size: 0.9rem;
+    }
+
+    .hodophile h3 {
+        bottom: 4%;
+    }
+
+    .hodophile img {
+        top: 48%;
+    }
+
+    .contact img {
+        bottom: -20%;
+    }
+
+    .contact h3 {
+        bottom: -43%;
+    }
 }

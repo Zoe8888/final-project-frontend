@@ -93,9 +93,27 @@ body.disable {
     position: absolute;
     top: 28%;
     right: 4%;
+    color: rgb(103, 126, 134);
 }
 
 #search {
+    height: 4vh;
+    color: rgb(123, 151, 161);
+    border: 2px solid rgb(103, 126, 134);
+    border-radius: 2px;
+    outline: none;
+}
+
+#search::placeholder {
+    color: rgb(123, 151, 161);
+}
+
+.searchButton {
+    color: rgb(235, 235, 235);
+    background-color: rgb(123, 151, 161);
+    border: 2px solid rgb(103, 126, 134);
+    border-radius: 2px;
+    outline: none;
     height: 4vh;
 }
 
@@ -173,6 +191,7 @@ body.disable {
     flex-direction: column;
     margin-left: 4%;
     align-items: center;
+    gap: 30px;
 }
 
 .hideMenu,
