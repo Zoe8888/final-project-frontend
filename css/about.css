@@ -225,6 +225,11 @@ body {
         width: 17vw;
         right: 37.9%;
     }
+
+    .intro, .contact {
+        font-size: 0.9rem;
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 411px) {
