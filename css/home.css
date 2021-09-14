@@ -19,6 +19,7 @@ body {
     min-height: 100vh;
     font-family: "Roboto Mono";
     font-weight: 700;
+    overflow-x: hidden;
 }
 
 body.disable {
@@ -27,9 +28,9 @@ body.disable {
 
 .name {
     font-family: "Caveat";
-    position: absolute;
-    left: 3%;
-    top: 21%;
+    left: 7%;
+    top: 3.5%;
+    position: fixed;
     color: rgb(103, 126, 134);
 }
 
@@ -38,39 +39,51 @@ body.disable {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 10vh;
-    max-height: 10vh;
+    max-height: 100vh;
+    height: 100vh;
+    align-items: center;
+    top: -90vh;
     margin-bottom: 10%;
     background-color: rgb(235, 235, 235);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     overflow: visible;
     display: flex;
     justify-content: center;
+    transition: 0.3s ease-in-out;
+}
+
+#navContainer.active {
+    top: 0;
+}
+
+.menu {
+    position: fixed;
+    top: 4.5%;
+    left: 3%;
+    color: rgb(103, 126, 134);
 }
 
 .navbar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 0;
+    gap: 80px;
     list-style: none;
     text-decoration: none;
-    gap: 40px;
     height: 100%;
     font-weight: 700;
+    font-size: 1.5rem;
 }
 
-.navbar a,
-.navbar li {
+.navbar a {
     color: rgb(123, 151, 161);
     text-decoration: none;
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 10px;
-}
-
-.profile-container {
-    background-color: transparent;
-    height: 100%;
+    padding: 20px 10px;
 }
 
 .navbar a:hover,
@@ -79,20 +92,10 @@ body.disable {
     color: rgb(235, 235, 235);
 }
 
-.profile-menu {
-    position: absolute;
-    top: 100%;
-    right: 43.9%;
-    display: inline-block;
-    width: 9vw;
-    background-color: rgb(235, 235, 235);
-    padding: 1% 0;
-}
-
 .search {
-    position: absolute;
-    top: 28%;
-    right: 4%;
+    position: fixed;
+    top: 3%;
+    right: 5%;
     color: rgb(103, 126, 134);
 }
 
@@ -129,6 +132,9 @@ body.disable {
 
 .searchResult {
     font-weight: 700;
+    color: rgb(123, 151, 161);
+    background-color: rgb(235, 235, 235);
+    padding: 2%;
 }
 
 #posts {
@@ -194,7 +200,18 @@ body.disable {
     gap: 30px;
 }
 
-.hideMenu,
+.hideBars {
+    display: none;
+    position: fixed;
+    top: 4.5%;
+    left: 3%;
+    color: rgb(103, 126, 134);
+}
+
+.hideMenu {
+    display: none;
+}
+
 .hide,
 .hideAdd,
 .hideContainer,
@@ -373,4 +390,204 @@ body.disable {
     box-shadow: rgba(0, 0, 0, 0.1);
     width: 50vw;
     height: 30vw;
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .searchedContainer {
+        top: 9%;
+        right: 0;
+    }
+
+    .searchResult {
+        width: 100%;
+    }
+
+    .name {
+        left: 8%;
+    }
+
+    .menu {
+        top: 4.5%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .searchedContainer {
+        top: 9%;
+        right: 0;
+    }
+
+    .searchResult {
+        width: 100%;
+    }
+    .navbar {
+        gap: 70px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .search {
+        right: 6%;
+    }
+    .navbar {
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #navContainer {
+        top: -80vh;
+    }
+
+    .menu {
+        top: 3.5%;
+        left: 9%;
+        font-size: 1.5rem;
+    }
+
+    .name {
+        left: 20%;
+        top: 3%;
+    }
+
+    .search {
+        top: 9%;
+        right: 33%;
+    }
+
+    .searchedContainer {
+        position: fixed;
+        top: 15%;
+        left: 0;
+        width: 100vw;
+    }
+
+    .searchResult {
+        width: 100vw;
+    }
+
+    .navbar {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #navContainer {
+        top: -80vh;
+    }
+
+    .menu {
+        top: 3.5%;
+        left: 9%;
+        font-size: 1.5rem;
+    }
+
+    .name {
+        left: 20%;
+        top: 3%;
+    }
+
+    .search {
+        top: 9%;
+        right: 33%;
+    }
+
+    .searchedContainer {
+        position: fixed;
+        top: 15%;
+        left: 0;
+        width: 100vw;
+    }
+
+    .searchResult {
+        width: 100vw;
+    }
+
+    .navbar {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .searchedContainer {
+        top: 14%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #navContainer {
+        top: -80vh;
+    }
+
+    .menu {
+        top: 4%;
+        left: 6%;
+    }
+
+    .name {
+        left: 16%;
+        top: 3%;
+    }
+
+    .search {
+        top: 10%;
+        right: 32%;
+    }
+
+    .searchedContainer {
+        position: fixed;
+        top: 15%;
+        left: 0;
+        width: 100vw;
+    }
+
+    .searchResult {
+        width: 100vw;
+    }
+
+    .navbar {
+        margin-top: 5%;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .menu,
+    .navbar {
+        font-size: 1rem;
+    }
+
+    .searchResult {
+        position: fixed;
+        top: 15%;
+        left: 0;
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .search {
+        top: 9%;
+        right: 36%;
+    }
+
+    .name {
+        left: 14%;
+    }
+
+    .searchResult {
+        top: 13%;
+    }
 }

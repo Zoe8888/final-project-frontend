@@ -219,6 +219,7 @@ body {
     .navbar {
         gap: 0;
         font-size: 0.8rem;
+        right: 1%;
     }
 
     .profile-menu {
@@ -227,8 +228,24 @@ body {
     }
 
     .intro, .contact {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         flex-direction: column;
+    }
+
+    .intro img {
+        margin-right: 0;
+    }
+
+    .hodophile {
+        flex-direction: column-reverse;
+    }
+
+    .contact h3 {
+        margin-top: 2%;
+    }
+
+    .contact img {
+        margin-right: 0;
     }
 }
 
@@ -275,33 +292,27 @@ body {
 
     .hodophile {
         font-size: 0.67rem;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .hodophile img {
         margin-left: 0;
-        position: absolute;
-        top: 47%;
     }
 
     .hodophile h3 {
         margin: 0px 4%;
-        position: absolute;
-        bottom: 9%;
     }
 
     .contact {
         margin-bottom: 5%;
     }
 
-    .contact img {
+    /* .contact img {
         position: absolute;
         bottom: -13%;
-    }
+    } */
 
     .contact h3 {
-        position: absolute;
-        bottom: -31%;
         margin: 2% 4%;
         font-size: 0.8rem;
     }
@@ -313,22 +324,20 @@ body {
     }
 
     .intro {
-        font-size: 0.9rem;
+        font-size: 0.65rem;
+    }
+
+    .intro h1 {
+        margin-top: 4%;
+        margin-left: 2%;
+        margin-right: 2%;
     }
 
     .hodophile h3 {
-        bottom: 4%;
-    }
-
-    .hodophile img {
-        top: 48%;
-    }
-
-    .contact img {
-        bottom: -20%;
+        margin: 2% 4%;
     }
 
     .contact h3 {
-        bottom: -43%;
+        margin-top: 2%;
     }
 }

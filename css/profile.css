@@ -20,7 +20,7 @@ body {
 
 .name {
     font-family: "Caveat";
-    position: absolute;
+    position: fixed;
     left: 3%;
     top: 21%;
     color: rgb(103, 126, 134);
@@ -31,34 +31,52 @@ body {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 10vh;
-    max-height: 10vh;
+    max-height: 100vh;
+    height: 100vh;
+    align-items: center;
+    top: -90vh;
     margin-bottom: 10%;
     background-color: rgb(235, 235, 235);
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     overflow: visible;
     display: flex;
     justify-content: center;
+    transition: 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+#navContainer.active {
+    top: 0;
+}
+
+.menu {
+    position: fixed;
+    top: 4.5%;
+    left: 3%;
+    color: rgb(103, 126, 134);
 }
 
 .navbar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 0;
+    gap: 80px;
     list-style: none;
     text-decoration: none;
-    gap: 40px;
     height: 100%;
     font-weight: 700;
+    font-size: 1.5rem;
 }
 
-.navbar a,
-.navbar li {
+.navbar a {
     color: rgb(123, 151, 161);
     text-decoration: none;
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 20px 10px;
 }
 
 .profile-container {
@@ -259,7 +277,7 @@ body {
 }
 
 .signOut {
-    position: absolute;
+    position: fixed;
     right: 2%;
     top: 15%;
     height: 6vh;
@@ -303,4 +321,132 @@ body {
     width: 50vw;
     height: 20vw;
     font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .name {
+        left: 13%;
+        top: 4%;
+        font-size: 2rem;
+    }
+
+    .menu {
+        top: 4.5%;
+        left: 7%;
+        font-size: 2rem;
+    }
+
+    .signOut {
+        top: 4%;
+        right: 6%;
+        height: 4vh;
+        width: 14vw;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        gap: 70px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .navbar {
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #navContainer {
+        top: -80vh;
+    }
+
+    .menu {
+        top: 3.5%;
+        left: 9%;
+        font-size: 1.5rem;
+    }
+
+    .name {
+        left: 20%;
+        top: 3%;
+    }
+
+    .navbar {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 411px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #navContainer {
+        top: -80vh;
+    }
+
+    .menu {
+        top: 3.5%;
+        left: 9%;
+        font-size: 1.5rem;
+    }
+
+    .name {
+        left: 20%;
+        top: 3%;
+    }
+
+    .navbar {
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .searchedContainer {
+        top: 14%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #navContainer {
+        top: -80vh;
+    }
+
+    .menu {
+        top: 4%;
+        left: 6%;
+    }
+
+    .name {
+        left: 16%;
+        top: 3%;
+    }
+
+    .navbar {
+        margin-top: 5%;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .menu,
+    .navbar {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .name {
+        left: 14%;
+    }
 }

@@ -1,6 +1,6 @@
-// Creates a drop down menu when the user clicks on the account option in the navbar
-document.querySelector('.profile-container').addEventListener('click', () => {
-  document.querySelector('.profile-menu').classList.toggle('hideMenu')
+// Toggle that hides and displays the nav bar
+document.querySelector('.menu').addEventListener('click', () => {
+  document.getElementById('navContainer').classList.toggle('active')
 })
 
 // Displays the users profile details if they are logged in. If not then they have the option to either log in or create an account

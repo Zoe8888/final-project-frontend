@@ -1,12 +1,12 @@
-// Creates a drop down menu when the user clicks on the account option in the navbar
-document.querySelector('.profile-container').addEventListener('click', () => {
-    document.querySelector('.profile-menu').classList.toggle('hideMenu')
-})
-
 // Prevents the page from refreshing after every search a user makes
 document.querySelector('.search').addEventListener('submit', (e) => {
     e.preventDefault()
     search()
+})
+
+// Toggle that hides and displays the nav bar
+document.querySelector('.menu').addEventListener('click', () => {
+    document.getElementById('navContainer').classList.toggle('active')
 })
 
 // A function that allows the user to search for a specific post
@@ -39,6 +39,7 @@ function search() {
                     .innerHTML += `<div class="searchResult" id="${post[0]}">
                                         <p>${post[2]}</p>
                                         <button class="viewResult">View</button>
+                                        <button class="clear" onclick="document.querySelector('.searchedContainer').innerHTML = ''">Clear</button>
                                     </div>`
                                     document.querySelectorAll('.viewResult').forEach((button) => {
                                         button.addEventListener('click', (e) => {
