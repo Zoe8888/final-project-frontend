@@ -19,7 +19,7 @@ body {
     min-height: 100vh;
     font-family: "Roboto Mono";
     font-weight: 700;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 body.disable {
@@ -69,7 +69,7 @@ body.disable {
     align-items: center;
     justify-content: center;
     height: 0;
-    gap: 80px;
+    gap: 50px;
     list-style: none;
     text-decoration: none;
     height: 100%;
@@ -83,7 +83,7 @@ body.disable {
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 20px 10px;
+    padding: 10px;
 }
 
 .navbar a:hover,
@@ -407,11 +407,66 @@ body.disable {
     }
 
     .name {
-        left: 8%;
+        top: 2.5rem;
+        left: 11%;
+        font-size: 3rem;
     }
 
     .menu {
-        top: 4.5%;
+        top: 3.5%;
+        font-size: 2.5rem;
+    }
+
+    #posts {
+        margin-top: 15%
+    }
+
+    .post {
+        width: 85vw;
+    }
+
+    .post-image img {
+        height: 30vw;
+        width: 45vw;
+    }
+
+    .viewPost {
+        width: 10vw;
+        height: 4vw;
+    }
+
+    .blogPost {
+        margin: 2% 10%;
+        font-size: 1.5rem;
+    }
+
+    .postImage img {
+        height: 40vw;
+        width: 60vw;
+    }
+
+    .title {
+        margin-top: 4%;
+    }
+
+    .content {
+        margin: 5% 0;
+    }
+
+    .likes {
+        margin: 1%;
+        width: 100vw;
+    }
+
+    .commentContainer {
+        width: 60vw;
+        font-size: 1.5rem;
+    }
+
+    .ellipsis,
+    .editComment,
+    .deleteComment {
+        font-size: 1.5rem;
     }
 }
 
@@ -529,6 +584,7 @@ body.disable {
 @media screen and (max-width: 360px) {
     #navContainer {
         top: -80vh;
+        width: 100%;
     }
 
     .menu {

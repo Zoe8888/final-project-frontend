@@ -313,6 +313,26 @@ body {
     font-size: 1.5rem;
 }
 
+.createPostContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(165, 165, 165);
+}
+
+.createPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 80vw;
+    color: rgb(190, 190, 190);
+    background-color: rgb(123, 151, 161);
+    border: 2px solid rgb(103, 126, 134);
+    border-radius: 2px;
+}
+
 @media screen and (max-width: 1024px) {
     body {
         overflow-x: hidden;

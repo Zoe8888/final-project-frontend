@@ -339,7 +339,7 @@ function toggleAuthor (e) {
   editAuthor.id = e.parentElement.parentElement.id
 }
 
-// Toggle to close the edit auhtor container
+// Toggle to close the edit author container
 document.querySelector('.closeAuthor').addEventListener('click', () => {
   let editAuthor = document.querySelector('.editAuthorContainer')
   editAuthor.classList.toggle('hideAuthor');
@@ -385,6 +385,12 @@ function createPost() {
                       </div>`
   }
 }
+
+// Toggle to close the create new post form
+document.querySelector('.closeCreate').addEventListener('click', () => {
+  let createPost = document.querySelector('.createPostContainer')
+  createPost.classList.toggle('hideCreate');
+})
 
 // Allows a file to be displayed and saved proprely for the edit post image function
 function viewFile() {
