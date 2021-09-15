@@ -149,8 +149,13 @@ body {
     }
 
     .login {
-        height: 25vh;
+        height: 20vh;
         font-size: 4rem;
+    }
+
+    .loginInputs {
+        display: flex;
+        flex-direction: column;
     }
 
     .login input,
